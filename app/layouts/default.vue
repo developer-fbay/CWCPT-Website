@@ -1,3 +1,11 @@
+<script setup lang="ts">
+// The screen guides for testing window sizes load only with ?folds in the address (utils/folds.ts)
+const folds = ref(false)
+onMounted(() => {
+  folds.value = foldsWanted()
+})
+</script>
+
 <template>
   <div>
     <a class="skip" href="#main">Skip to content</a>
@@ -7,6 +15,7 @@
       <slot />
     </main>
     <AppFooter />
+    <LazyFoldGuides v-if="folds" />
   </div>
 </template>
 
