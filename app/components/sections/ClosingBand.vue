@@ -42,13 +42,13 @@ const actions = computed(() => props.actions ?? closingBand.actions)
 
 <style scoped>
 .band { position: relative; padding: 40px 0 0; overflow: hidden; }
-.band__inner { position: relative; max-width: var(--sl-max); margin: 0 auto; }
+.band__inner { position: relative; max-width: var(--band-max); margin: 0 auto; }
 .band__text { position: absolute; right: 6%; bottom: 9%; display: flex; flex-direction: column; gap: 22px; align-items: flex-end; text-align: right; }
 .band__h { font-size: var(--fs-band); }
 .band__btns { justify-content: flex-end; }
 .band__p { max-width: 460px; }
 @media (max-width: 960px) {
-  .band__text { position: static; padding: 0 var(--gutter) 64px; align-items: flex-start; text-align: left; }
+  .band__text { position: static; padding: 0 var(--gutter) 48px; align-items: flex-start; text-align: left; }
   .band__btns { justify-content: flex-start; }
 }
 </style>

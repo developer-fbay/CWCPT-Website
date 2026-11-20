@@ -79,6 +79,7 @@
   --sec-y: clamp(56px, 7vw, 96px);
   /* No decorative piece is taller than the screen: strip lights and the band shrink with the window's height too */
   --sl-max: min(1440px, 150vh);
+  --band-max: min(1040px, 105vh);           /* the closing band's mountain: smaller, so the band stays short (2026-11-20) */
   --card-img: clamp(160px, 27vh, 210px);   /* photo on office and room cards */
 
   /* Assets */

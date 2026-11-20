@@ -69,12 +69,12 @@ const officePhotos = [
       <div class="wrap stack">
         <div class="sec-top">
           <SectionHeading id="plans-h" label="Pricing" :lines="['Pick your', 'plan']" />
-          <div class="r-body stack-sm">
-            <p class="lead muted">{{ plansHomeLead }}</p>
+          <div class="r-body plans-more">
             <TextLink to="/pricing" light cta="home_pricing">Full pricing and what's included</TextLink>
           </div>
         </div>
         <PlanCards :plans="plans" />
+        <p class="muted r-body plans-note">{{ plansHomeLead }}</p>
       </div>
     </section>
 
@@ -177,7 +177,6 @@ const officePhotos = [
 
 <style scoped>
 .stack { display: flex; flex-direction: column; gap: 26px; }
-.stack-sm { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
 
 .why-a { padding-bottom: var(--sec-y); }
 .why-a__facts { padding: 40px 0 36px; border-bottom: 1px solid var(--line-mid); }
@@ -199,6 +198,9 @@ const officePhotos = [
 
 .plans-sec { padding: 0 0 var(--sec-y); }
 .plans-sl { max-width: var(--sl-max); margin: 0 auto; }
+/* "Full pricing" ends on the cards' right edge; the VAT and billing note sits centred under the cards */
+.plans-more { justify-self: end; }
+.plans-note { font-size: 14px; text-align: center; }
 
 .offices__grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 64px; align-items: start; }
 .chips { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -226,6 +228,7 @@ const officePhotos = [
   .bracket { white-space: normal; margin: 0; }
   .bracket__sl { display: none; }
   .reviews__meta { justify-content: flex-start; }
+  .plans-more { justify-self: start; }
   .offices__photos { grid-template-rows: 180px 180px; }
 }
 </style>
