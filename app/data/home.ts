@@ -35,7 +35,8 @@ export const hero = {
     // Parts of the video to skip, in seconds: at `at` the player jumps to `to`. Hides the YouTube subscribe badge
     // in the licensed footage (Jesse, 2026-11-20). Find the seconds with ?video-time in the address; start `at`
     // half a second before the badge appears. To cut the end off instead, jump back to 0.
-    jumps: [] as { at: number; to: number }[],
+    // The badge shows from 42s to 49s (Jesse, 2026-11-20): jump half a second early, land half a second after.
+    jumps: [{ at: 41.5, to: 49.5 }] as { at: number; to: number }[],
   },
   card: { label: 'Access', value: '24/7', note: 'Tap your tag' },
 }
