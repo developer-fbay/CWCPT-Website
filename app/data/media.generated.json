@@ -1,0 +1,1384 @@
+[
+  {
+    "key": "google-review-logo",
+    "group": "brand",
+    "alt": "Google-Review-Logo 1",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/09/Google-Review-Logo-1.png",
+    "files": [
+      {
+        "src": "/images/brand/google-review-logo.webp",
+        "width": 252,
+        "height": 142,
+        "kb": 11
+      }
+    ]
+  },
+  {
+    "key": "heading-underline",
+    "group": "brand",
+    "alt": "CWCT Neon heading underline",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/09/Group-12.png",
+    "files": [
+      {
+        "src": "/images/brand/heading-underline.webp",
+        "width": 1484,
+        "height": 405,
+        "kb": 88
+      }
+    ]
+  },
+  {
+    "key": "heading-underline-long",
+    "group": "brand",
+    "alt": "CWCT Neon heading underline long",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/09/Group-13-1-scaled.png",
+    "files": [
+      {
+        "src": "/images/brand/heading-underline-long.webp",
+        "width": 2560,
+        "height": 288,
+        "kb": 24
+      }
+    ]
+  },
+  {
+    "key": "heading-underline-mobile",
+    "group": "brand",
+    "alt": "Mobile heading underline",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/09/Frame-79.png",
+    "files": [
+      {
+        "src": "/images/brand/heading-underline-mobile.webp",
+        "width": 1380,
+        "height": 132,
+        "kb": 57
+      }
+    ]
+  },
+  {
+    "key": "heading-underline-thin",
+    "group": "brand",
+    "alt": "CWCT Neon heading underline",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/09/Group-13-3-scaled.png",
+    "files": [
+      {
+        "src": "/images/brand/heading-underline-thin.webp",
+        "width": 1600,
+        "height": 236,
+        "kb": 37
+      }
+    ]
+  },
+  {
+    "key": "heading-underline-wide",
+    "group": "brand",
+    "alt": "CWCT Neon heading underline",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/09/Group-13-2.png",
+    "files": [
+      {
+        "src": "/images/brand/heading-underline-wide.webp",
+        "width": 1600,
+        "height": 292,
+        "kb": 67
+      }
+    ]
+  },
+  {
+    "key": "logo-black",
+    "group": "brand",
+    "alt": "CWCT_Logo_black",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/09/CWCT_Logo_black-scaled.png",
+    "files": [
+      {
+        "src": "/images/brand/logo-black.webp",
+        "width": 600,
+        "height": 340,
+        "kb": 15
+      }
+    ]
+  },
+  {
+    "key": "logo-transparent",
+    "group": "brand",
+    "alt": "CWCT logo transparent background",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/07/CWCT-logo-transparent-background-scaled.png",
+    "files": [
+      {
+        "src": "/images/brand/logo-transparent.webp",
+        "width": 600,
+        "height": 340,
+        "kb": 17
+      }
+    ]
+  },
+  {
+    "key": "neon-divider",
+    "group": "brand",
+    "alt": "Neon divder",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/09/Frame-76-1-scaled.png",
+    "files": [
+      {
+        "src": "/images/brand/neon-divider.webp",
+        "width": 2560,
+        "height": 182,
+        "kb": 30
+      }
+    ]
+  },
+  {
+    "key": "partner-employer-of-record-sa",
+    "group": "brand",
+    "alt": "Employer of Record SA logo",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/10/Employer-of-Record-Logo-white-1-scaled.png",
+    "files": [
+      {
+        "src": "/images/brand/partner-employer-of-record-sa.webp",
+        "width": 1600,
+        "height": 559,
+        "kb": 33
+      }
+    ]
+  },
+  {
+    "key": "partner-fbx-capital-partners",
+    "group": "brand",
+    "alt": "FBX Capital Partners Logo",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/10/fbx-logo-horizontal-white-scaled.png",
+    "files": [
+      {
+        "src": "/images/brand/partner-fbx-capital-partners.webp",
+        "width": 1600,
+        "height": 559,
+        "kb": 18
+      }
+    ]
+  },
+  {
+    "key": "partner-funding-bay",
+    "group": "brand",
+    "alt": "Funding Bay Logo",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/10/Funding-Bay-Logo-white-scaled.png",
+    "files": [
+      {
+        "src": "/images/brand/partner-funding-bay.webp",
+        "width": 1600,
+        "height": 559,
+        "kb": 20
+      }
+    ]
+  },
+  {
+    "key": "partner-the-legends-agency",
+    "group": "brand",
+    "alt": "The Legends Agency Logo",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/10/The_Legends_Agency-Logo-white-scaled.png",
+    "files": [
+      {
+        "src": "/images/brand/partner-the-legends-agency.webp",
+        "width": 1600,
+        "height": 559,
+        "kb": 23
+      }
+    ]
+  },
+  {
+    "key": "home-hero-poster",
+    "group": "hero",
+    "alt": "Home FallBack Image",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/09/Cape-Town-4K-South-Africas-Coastal-Jewel-_-Cinematic-Drone-Footage-0-1-screenshot.png",
+    "files": [
+      {
+        "src": "/images/hero/home-hero-poster-1920.webp",
+        "width": 1920,
+        "height": 1080,
+        "kb": 89
+      },
+      {
+        "src": "/images/hero/home-hero-poster-960.webp",
+        "width": 960,
+        "height": 540,
+        "kb": 32
+      }
+    ]
+  },
+  {
+    "key": "aweh-office-5519",
+    "group": "photos",
+    "alt": "CWCPT Aweh Office",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/12/IMG_5519-scaled.png",
+    "files": [
+      {
+        "src": "/images/photos/aweh-office-5519-1600.webp",
+        "width": 1600,
+        "height": 1200,
+        "kb": 113
+      },
+      {
+        "src": "/images/photos/aweh-office-5519-800.webp",
+        "width": 800,
+        "height": 600,
+        "kb": 44
+      }
+    ]
+  },
+  {
+    "key": "booths-5532",
+    "group": "photos",
+    "alt": "CWCPT Booths",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/12/IMG_5532-scaled.png",
+    "files": [
+      {
+        "src": "/images/photos/booths-5532-1600.webp",
+        "width": 1600,
+        "height": 2133,
+        "kb": 250
+      },
+      {
+        "src": "/images/photos/booths-5532-800.webp",
+        "width": 800,
+        "height": 1067,
+        "kb": 99
+      }
+    ]
+  },
+  {
+    "key": "eating-area-5533",
+    "group": "photos",
+    "alt": "CWCPT Eating Area",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/12/IMG_5533-scaled.png",
+    "files": [
+      {
+        "src": "/images/photos/eating-area-5533-1600.webp",
+        "width": 1600,
+        "height": 2133,
+        "kb": 251
+      },
+      {
+        "src": "/images/photos/eating-area-5533-800.webp",
+        "width": 800,
+        "height": 1067,
+        "kb": 87
+      }
+    ]
+  },
+  {
+    "key": "eating-area-5541",
+    "group": "photos",
+    "alt": "CWCPT Eating Area",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/12/IMG_5541-scaled.png",
+    "files": [
+      {
+        "src": "/images/photos/eating-area-5541-1600.webp",
+        "width": 1600,
+        "height": 2133,
+        "kb": 223
+      },
+      {
+        "src": "/images/photos/eating-area-5541-800.webp",
+        "width": 800,
+        "height": 1067,
+        "kb": 80
+      }
+    ]
+  },
+  {
+    "key": "eating-area-5547",
+    "group": "photos",
+    "alt": "CWCPT Eating Area",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/12/IMG_5547-scaled.png",
+    "files": [
+      {
+        "src": "/images/photos/eating-area-5547-1600.webp",
+        "width": 1600,
+        "height": 2133,
+        "kb": 94
+      },
+      {
+        "src": "/images/photos/eating-area-5547-800.webp",
+        "width": 800,
+        "height": 1067,
+        "kb": 38
+      }
+    ]
+  },
+  {
+    "key": "entrance-2-5563",
+    "group": "photos",
+    "alt": "CWCPT Entrance 2",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/12/IMG_5563-scaled.png",
+    "files": [
+      {
+        "src": "/images/photos/entrance-2-5563-1600.webp",
+        "width": 1600,
+        "height": 1200,
+        "kb": 78
+      },
+      {
+        "src": "/images/photos/entrance-2-5563-800.webp",
+        "width": 800,
+        "height": 600,
+        "kb": 28
+      }
+    ]
+  },
+  {
+    "key": "entrance-5559",
+    "group": "photos",
+    "alt": "CWCPT Entrance",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/12/IMG_5559-scaled.png",
+    "files": [
+      {
+        "src": "/images/photos/entrance-5559-1600.webp",
+        "width": 1600,
+        "height": 1200,
+        "kb": 149
+      },
+      {
+        "src": "/images/photos/entrance-5559-800.webp",
+        "width": 800,
+        "height": 600,
+        "kb": 54
+      }
+    ]
+  },
+  {
+    "key": "fb-tla-ev-space-6596",
+    "group": "photos",
+    "alt": "FB TLA EV Space",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2026/01/IMG_6596-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/photos/fb-tla-ev-space-6596-1600.webp",
+        "width": 1600,
+        "height": 1200,
+        "kb": 201
+      },
+      {
+        "src": "/images/photos/fb-tla-ev-space-6596-800.webp",
+        "width": 800,
+        "height": 600,
+        "kb": 71
+      }
+    ]
+  },
+  {
+    "key": "hot-desking-space-192005",
+    "group": "photos",
+    "alt": "hot desking space",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2026/01/20251124_192005-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/photos/hot-desking-space-192005-1600.webp",
+        "width": 1600,
+        "height": 1200,
+        "kb": 203
+      },
+      {
+        "src": "/images/photos/hot-desking-space-192005-800.webp",
+        "width": 800,
+        "height": 600,
+        "kb": 56
+      }
+    ]
+  },
+  {
+    "key": "hot-desking-space-192019",
+    "group": "photos",
+    "alt": "hot desking space",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2026/01/20251124_192019-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/photos/hot-desking-space-192019-1600.webp",
+        "width": 1600,
+        "height": 1200,
+        "kb": 110
+      },
+      {
+        "src": "/images/photos/hot-desking-space-192019-800.webp",
+        "width": 800,
+        "height": 600,
+        "kb": 35
+      }
+    ]
+  },
+  {
+    "key": "img-5124",
+    "group": "photos",
+    "alt": "",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2026/08/IMG_5124-scaled.png",
+    "files": [
+      {
+        "src": "/images/photos/img-5124-1600.webp",
+        "width": 1600,
+        "height": 1200,
+        "kb": 182
+      },
+      {
+        "src": "/images/photos/img-5124-800.webp",
+        "width": 800,
+        "height": 600,
+        "kb": 48
+      }
+    ]
+  },
+  {
+    "key": "img-5148",
+    "group": "photos",
+    "alt": "",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2026/08/IMG_5148-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/photos/img-5148-1600.webp",
+        "width": 1600,
+        "height": 1200,
+        "kb": 199
+      },
+      {
+        "src": "/images/photos/img-5148-800.webp",
+        "width": 800,
+        "height": 600,
+        "kb": 50
+      }
+    ]
+  },
+  {
+    "key": "img-5150",
+    "group": "photos",
+    "alt": "",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2026/08/IMG_5150-scaled.png",
+    "files": [
+      {
+        "src": "/images/photos/img-5150-1600.webp",
+        "width": 1600,
+        "height": 1200,
+        "kb": 129
+      },
+      {
+        "src": "/images/photos/img-5150-800.webp",
+        "width": 800,
+        "height": 600,
+        "kb": 35
+      }
+    ]
+  },
+  {
+    "key": "img-5153",
+    "group": "photos",
+    "alt": "",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2026/08/IMG_5153-scaled.png",
+    "files": [
+      {
+        "src": "/images/photos/img-5153-1600.webp",
+        "width": 1600,
+        "height": 1200,
+        "kb": 133
+      },
+      {
+        "src": "/images/photos/img-5153-800.webp",
+        "width": 800,
+        "height": 600,
+        "kb": 36
+      }
+    ]
+  },
+  {
+    "key": "img-5170",
+    "group": "photos",
+    "alt": "",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2026/08/IMG_5170-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/photos/img-5170-1600.webp",
+        "width": 1600,
+        "height": 1200,
+        "kb": 104
+      },
+      {
+        "src": "/images/photos/img-5170-800.webp",
+        "width": 800,
+        "height": 600,
+        "kb": 28
+      }
+    ]
+  },
+  {
+    "key": "kitchen-5567",
+    "group": "photos",
+    "alt": "CWCPT Kitchen",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/12/IMG_5567-scaled.png",
+    "files": [
+      {
+        "src": "/images/photos/kitchen-5567-1600.webp",
+        "width": 1600,
+        "height": 1200,
+        "kb": 125
+      },
+      {
+        "src": "/images/photos/kitchen-5567-800.webp",
+        "width": 800,
+        "height": 600,
+        "kb": 43
+      }
+    ]
+  },
+  {
+    "key": "meeting-booth-8854",
+    "group": "photos",
+    "alt": "meeting booth",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2026/01/IMG_8854-scaled.jpeg",
+    "files": [
+      {
+        "src": "/images/photos/meeting-booth-8854-1600.webp",
+        "width": 1600,
+        "height": 1200,
+        "kb": 149
+      },
+      {
+        "src": "/images/photos/meeting-booth-8854-800.webp",
+        "width": 800,
+        "height": 600,
+        "kb": 46
+      }
+    ]
+  },
+  {
+    "key": "meeting-booth-8856",
+    "group": "photos",
+    "alt": "meeting booth",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2026/01/IMG_8856-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/photos/meeting-booth-8856-1600.webp",
+        "width": 1600,
+        "height": 1200,
+        "kb": 168
+      },
+      {
+        "src": "/images/photos/meeting-booth-8856-800.webp",
+        "width": 800,
+        "height": 600,
+        "kb": 47
+      }
+    ]
+  },
+  {
+    "key": "meeting-booth-8857",
+    "group": "photos",
+    "alt": "meeting booth",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2026/01/IMG_8857-scaled.jpeg",
+    "files": [
+      {
+        "src": "/images/photos/meeting-booth-8857-1600.webp",
+        "width": 1600,
+        "height": 1200,
+        "kb": 155
+      },
+      {
+        "src": "/images/photos/meeting-booth-8857-800.webp",
+        "width": 800,
+        "height": 600,
+        "kb": 48
+      }
+    ]
+  },
+  {
+    "key": "meeting-room-8846",
+    "group": "photos",
+    "alt": "meeting room",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2026/01/IMG_8846-scaled.jpeg",
+    "files": [
+      {
+        "src": "/images/photos/meeting-room-8846-1600.webp",
+        "width": 1600,
+        "height": 1200,
+        "kb": 132
+      },
+      {
+        "src": "/images/photos/meeting-room-8846-800.webp",
+        "width": 800,
+        "height": 600,
+        "kb": 40
+      }
+    ]
+  },
+  {
+    "key": "meeting-room-8848",
+    "group": "photos",
+    "alt": "meeting room",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2026/01/IMG_8848-scaled.jpeg",
+    "files": [
+      {
+        "src": "/images/photos/meeting-room-8848-1600.webp",
+        "width": 1600,
+        "height": 1200,
+        "kb": 108
+      },
+      {
+        "src": "/images/photos/meeting-room-8848-800.webp",
+        "width": 800,
+        "height": 600,
+        "kb": 33
+      }
+    ]
+  },
+  {
+    "key": "meeting-room-8850",
+    "group": "photos",
+    "alt": "meeting room",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2026/01/IMG_8850-scaled.jpeg",
+    "files": [
+      {
+        "src": "/images/photos/meeting-room-8850-1600.webp",
+        "width": 1600,
+        "height": 1200,
+        "kb": 171
+      },
+      {
+        "src": "/images/photos/meeting-room-8850-800.webp",
+        "width": 800,
+        "height": 600,
+        "kb": 47
+      }
+    ]
+  },
+  {
+    "key": "office-for-sale-6532",
+    "group": "photos",
+    "alt": "office for sale",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2026/01/IMG_6532-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/photos/office-for-sale-6532-1600.webp",
+        "width": 1600,
+        "height": 1200,
+        "kb": 156
+      },
+      {
+        "src": "/images/photos/office-for-sale-6532-800.webp",
+        "width": 800,
+        "height": 600,
+        "kb": 53
+      }
+    ]
+  },
+  {
+    "key": "office-for-sale-6536",
+    "group": "photos",
+    "alt": "office for sale",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2026/01/IMG_6536-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/photos/office-for-sale-6536-1600.webp",
+        "width": 1600,
+        "height": 1200,
+        "kb": 123
+      },
+      {
+        "src": "/images/photos/office-for-sale-6536-800.webp",
+        "width": 800,
+        "height": 600,
+        "kb": 47
+      }
+    ]
+  },
+  {
+    "key": "office-for-sale-6539",
+    "group": "photos",
+    "alt": "office for sale",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2026/01/IMG_6539-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/photos/office-for-sale-6539-1600.webp",
+        "width": 1600,
+        "height": 1200,
+        "kb": 110
+      },
+      {
+        "src": "/images/photos/office-for-sale-6539-800.webp",
+        "width": 800,
+        "height": 600,
+        "kb": 44
+      }
+    ]
+  },
+  {
+    "key": "office-for-sale-6542",
+    "group": "photos",
+    "alt": "Office for sale",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2026/01/IMG_6542-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/photos/office-for-sale-6542-1600.webp",
+        "width": 1600,
+        "height": 1200,
+        "kb": 144
+      },
+      {
+        "src": "/images/photos/office-for-sale-6542-800.webp",
+        "width": 800,
+        "height": 600,
+        "kb": 49
+      }
+    ]
+  },
+  {
+    "key": "office-for-sale-6555",
+    "group": "photos",
+    "alt": "office for sale",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2026/01/IMG_6555-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/photos/office-for-sale-6555-1600.webp",
+        "width": 1600,
+        "height": 1200,
+        "kb": 103
+      },
+      {
+        "src": "/images/photos/office-for-sale-6555-800.webp",
+        "width": 800,
+        "height": 600,
+        "kb": 33
+      }
+    ]
+  },
+  {
+    "key": "office-for-sale-6562",
+    "group": "photos",
+    "alt": "office for sale",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2026/01/IMG_6562-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/photos/office-for-sale-6562-1600.webp",
+        "width": 1600,
+        "height": 1200,
+        "kb": 151
+      },
+      {
+        "src": "/images/photos/office-for-sale-6562-800.webp",
+        "width": 800,
+        "height": 600,
+        "kb": 44
+      }
+    ]
+  },
+  {
+    "key": "pool-table-5552",
+    "group": "photos",
+    "alt": "CWCPT Pool Table",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/12/IMG_5552-scaled.png",
+    "files": [
+      {
+        "src": "/images/photos/pool-table-5552-1600.webp",
+        "width": 1600,
+        "height": 2133,
+        "kb": 101
+      },
+      {
+        "src": "/images/photos/pool-table-5552-800.webp",
+        "width": 800,
+        "height": 1067,
+        "kb": 34
+      }
+    ]
+  },
+  {
+    "key": "seating-area-5522",
+    "group": "photos",
+    "alt": "CWCPT Seating Area",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/12/IMG_5522-scaled.png",
+    "files": [
+      {
+        "src": "/images/photos/seating-area-5522-1600.webp",
+        "width": 1600,
+        "height": 1200,
+        "kb": 299
+      },
+      {
+        "src": "/images/photos/seating-area-5522-800.webp",
+        "width": 800,
+        "height": 600,
+        "kb": 83
+      }
+    ]
+  },
+  {
+    "key": "seating-area-5526",
+    "group": "photos",
+    "alt": "CWCPT Seating Area",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/12/IMG_5526-scaled.png",
+    "files": [
+      {
+        "src": "/images/photos/seating-area-5526-1600.webp",
+        "width": 1600,
+        "height": 2133,
+        "kb": 242
+      },
+      {
+        "src": "/images/photos/seating-area-5526-800.webp",
+        "width": 800,
+        "height": 1067,
+        "kb": 81
+      }
+    ]
+  },
+  {
+    "key": "seating-area-5561",
+    "group": "photos",
+    "alt": "CWCPT Seating Area",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/12/IMG_5561-scaled.png",
+    "files": [
+      {
+        "src": "/images/photos/seating-area-5561-1600.webp",
+        "width": 1600,
+        "height": 2133,
+        "kb": 173
+      },
+      {
+        "src": "/images/photos/seating-area-5561-800.webp",
+        "width": 800,
+        "height": 1067,
+        "kb": 52
+      }
+    ]
+  },
+  {
+    "key": "tv-bg",
+    "group": "photos",
+    "alt": "",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2026/04/Tv-BG-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/photos/tv-bg-1600.webp",
+        "width": 1600,
+        "height": 900,
+        "kb": 23
+      },
+      {
+        "src": "/images/photos/tv-bg-800.webp",
+        "width": 800,
+        "height": 450,
+        "kb": 11
+      }
+    ]
+  },
+  {
+    "key": "waiting-area-5550",
+    "group": "photos",
+    "alt": "Waiting Area",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/12/IMG_5550-scaled.png",
+    "files": [
+      {
+        "src": "/images/photos/waiting-area-5550-1600.webp",
+        "width": 1600,
+        "height": 2133,
+        "kb": 225
+      },
+      {
+        "src": "/images/photos/waiting-area-5550-800.webp",
+        "width": 800,
+        "height": 1067,
+        "kb": 74
+      }
+    ]
+  },
+  {
+    "key": "1st-floor-layout",
+    "group": "plans",
+    "alt": "1st floor layout",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/10/1st_floor_co_work_black-2-scaled.png",
+    "files": [
+      {
+        "src": "/images/plans/1st-floor-layout-2560.webp",
+        "width": 2560,
+        "height": 1054,
+        "kb": 31
+      },
+      {
+        "src": "/images/plans/1st-floor-layout-1280.webp",
+        "width": 1280,
+        "height": 527,
+        "kb": 15
+      }
+    ]
+  },
+  {
+    "key": "2nd-floor-layout",
+    "group": "plans",
+    "alt": "2nd floor layout",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/10/2nd_floor_co_work_v2_black-2-scaled.png",
+    "files": [
+      {
+        "src": "/images/plans/2nd-floor-layout-2560.webp",
+        "width": 2560,
+        "height": 1054,
+        "kb": 23
+      },
+      {
+        "src": "/images/plans/2nd-floor-layout-1280.webp",
+        "width": 1280,
+        "height": 527,
+        "kb": 11
+      }
+    ]
+  },
+  {
+    "key": "404-page-placeholder-567456766",
+    "group": "stock",
+    "alt": "404 page Placeholder",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/10/shutterstock_567456766-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/stock/404-page-placeholder-567456766-1600.webp",
+        "width": 1600,
+        "height": 1066,
+        "kb": 41
+      },
+      {
+        "src": "/images/stock/404-page-placeholder-567456766-800.webp",
+        "width": 800,
+        "height": 533,
+        "kb": 14
+      }
+    ]
+  },
+  {
+    "key": "artist-hero-placeholder-2388618637",
+    "group": "stock",
+    "alt": "Artist hero placeholder",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/09/shutterstock_2388618637-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/stock/artist-hero-placeholder-2388618637-1600.webp",
+        "width": 1600,
+        "height": 800,
+        "kb": 35
+      },
+      {
+        "src": "/images/stock/artist-hero-placeholder-2388618637-800.webp",
+        "width": 800,
+        "height": 400,
+        "kb": 15
+      }
+    ]
+  },
+  {
+    "key": "artist-placeholder-2002358036",
+    "group": "stock",
+    "alt": "Artist placeholder",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/09/shutterstock_2002358036-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/stock/artist-placeholder-2002358036-1600.webp",
+        "width": 1600,
+        "height": 1600,
+        "kb": 151
+      },
+      {
+        "src": "/images/stock/artist-placeholder-2002358036-800.webp",
+        "width": 800,
+        "height": 800,
+        "kb": 75
+      }
+    ]
+  },
+  {
+    "key": "artist-placeholder-2033817740",
+    "group": "stock",
+    "alt": "Artist placeholder",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/09/shutterstock_2033817740.jpg",
+    "files": [
+      {
+        "src": "/images/stock/artist-placeholder-2033817740-1600.webp",
+        "width": 917,
+        "height": 917,
+        "kb": 51
+      },
+      {
+        "src": "/images/stock/artist-placeholder-2033817740-800.webp",
+        "width": 800,
+        "height": 800,
+        "kb": 45
+      }
+    ]
+  },
+  {
+    "key": "artist-placeholder-2428187587",
+    "group": "stock",
+    "alt": "Artist placeholder",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/09/shutterstock_2428187587-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/stock/artist-placeholder-2428187587-1600.webp",
+        "width": 1600,
+        "height": 800,
+        "kb": 129
+      },
+      {
+        "src": "/images/stock/artist-placeholder-2428187587-800.webp",
+        "width": 800,
+        "height": 400,
+        "kb": 48
+      }
+    ]
+  },
+  {
+    "key": "artist-placeholder-2523506689",
+    "group": "stock",
+    "alt": "Artist placeholder",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/09/shutterstock_2523506689-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/stock/artist-placeholder-2523506689-1600.webp",
+        "width": 1600,
+        "height": 933,
+        "kb": 100
+      },
+      {
+        "src": "/images/stock/artist-placeholder-2523506689-800.webp",
+        "width": 800,
+        "height": 466,
+        "kb": 32
+      }
+    ]
+  },
+  {
+    "key": "artist-placeholder-2532022761",
+    "group": "stock",
+    "alt": "Artist placeholder",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/09/shutterstock_2532022761-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/stock/artist-placeholder-2532022761-1600.webp",
+        "width": 1600,
+        "height": 1969,
+        "kb": 196
+      },
+      {
+        "src": "/images/stock/artist-placeholder-2532022761-800.webp",
+        "width": 800,
+        "height": 985,
+        "kb": 57
+      }
+    ]
+  },
+  {
+    "key": "arts-placeholder-2060087966",
+    "group": "stock",
+    "alt": "Arts Placeholder",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/09/shutterstock_2060087966-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/stock/arts-placeholder-2060087966-1600.webp",
+        "width": 1600,
+        "height": 1067,
+        "kb": 93
+      },
+      {
+        "src": "/images/stock/arts-placeholder-2060087966-800.webp",
+        "width": 800,
+        "height": 533,
+        "kb": 37
+      }
+    ]
+  },
+  {
+    "key": "arts-placeholder-2097530065",
+    "group": "stock",
+    "alt": "Arts Placeholder",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/09/shutterstock_2097530065-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/stock/arts-placeholder-2097530065-1600.webp",
+        "width": 1600,
+        "height": 675,
+        "kb": 33
+      },
+      {
+        "src": "/images/stock/arts-placeholder-2097530065-800.webp",
+        "width": 800,
+        "height": 338,
+        "kb": 12
+      }
+    ]
+  },
+  {
+    "key": "arts-placeholder-2216490393",
+    "group": "stock",
+    "alt": "Arts Placeholder",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/09/shutterstock_2216490393-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/stock/arts-placeholder-2216490393-1600.webp",
+        "width": 1600,
+        "height": 2293,
+        "kb": 345
+      },
+      {
+        "src": "/images/stock/arts-placeholder-2216490393-800.webp",
+        "width": 800,
+        "height": 1147,
+        "kb": 128
+      }
+    ]
+  },
+  {
+    "key": "arts-placeholder-468034400",
+    "group": "stock",
+    "alt": "Arts Placeholder",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/09/shutterstock_468034400-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/stock/arts-placeholder-468034400-1600.webp",
+        "width": 1600,
+        "height": 1088,
+        "kb": 252
+      },
+      {
+        "src": "/images/stock/arts-placeholder-468034400-800.webp",
+        "width": 800,
+        "height": 544,
+        "kb": 95
+      }
+    ]
+  },
+  {
+    "key": "cape-town-cbd-night-light-92558857",
+    "group": "stock",
+    "alt": "Cape Town CBD Night light",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/09/shutterstock_92558857-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/stock/cape-town-cbd-night-light-92558857-1600.webp",
+        "width": 1600,
+        "height": 979,
+        "kb": 190
+      },
+      {
+        "src": "/images/stock/cape-town-cbd-night-light-92558857-800.webp",
+        "width": 800,
+        "height": 489,
+        "kb": 57
+      }
+    ]
+  },
+  {
+    "key": "co-work-placeholder-image-2464458363",
+    "group": "stock",
+    "alt": "co work placeholder image",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/09/shutterstock_2464458363-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/stock/co-work-placeholder-image-2464458363-1600.webp",
+        "width": 1600,
+        "height": 1067,
+        "kb": 104
+      },
+      {
+        "src": "/images/stock/co-work-placeholder-image-2464458363-800.webp",
+        "width": 800,
+        "height": 533,
+        "kb": 33
+      }
+    ]
+  },
+  {
+    "key": "coming-soon-background-406189786",
+    "group": "stock",
+    "alt": "Coming soon background",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/08/shutterstock_406189786-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/stock/coming-soon-background-406189786-1600.webp",
+        "width": 1600,
+        "height": 1068,
+        "kb": 148
+      },
+      {
+        "src": "/images/stock/coming-soon-background-406189786-800.webp",
+        "width": 800,
+        "height": 534,
+        "kb": 40
+      }
+    ]
+  },
+  {
+    "key": "contact-page-placeholder-1918147940",
+    "group": "stock",
+    "alt": "Contact Page Placeholder",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/09/shutterstock_1918147940-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/stock/contact-page-placeholder-1918147940-1600.webp",
+        "width": 1600,
+        "height": 575,
+        "kb": 47
+      },
+      {
+        "src": "/images/stock/contact-page-placeholder-1918147940-800.webp",
+        "width": 800,
+        "height": 288,
+        "kb": 19
+      }
+    ]
+  },
+  {
+    "key": "gallery-placeholder-1929602159",
+    "group": "stock",
+    "alt": "Gallery Placeholder",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/09/shutterstock_1929602159-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/stock/gallery-placeholder-1929602159-1600.webp",
+        "width": 1600,
+        "height": 1064,
+        "kb": 81
+      },
+      {
+        "src": "/images/stock/gallery-placeholder-1929602159-800.webp",
+        "width": 800,
+        "height": 532,
+        "kb": 34
+      }
+    ]
+  },
+  {
+    "key": "hero-artist-placeholders-2418182313",
+    "group": "stock",
+    "alt": "Hero artist placeholders",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/09/shutterstock_2418182313-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/stock/hero-artist-placeholders-2418182313-1600.webp",
+        "width": 1600,
+        "height": 1067,
+        "kb": 43
+      },
+      {
+        "src": "/images/stock/hero-artist-placeholders-2418182313-800.webp",
+        "width": 800,
+        "height": 533,
+        "kb": 17
+      }
+    ]
+  },
+  {
+    "key": "placeholder-art",
+    "group": "stock",
+    "alt": "Placeholder art",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/09/e9df1654f6b615673394c546e41a466c.jpg",
+    "files": [
+      {
+        "src": "/images/stock/placeholder-art-1600.webp",
+        "width": 736,
+        "height": 451,
+        "kb": 48
+      },
+      {
+        "src": "/images/stock/placeholder-art-800.webp",
+        "width": 736,
+        "height": 451,
+        "kb": 48
+      }
+    ]
+  },
+  {
+    "key": "placeholder-art-2509793635",
+    "group": "stock",
+    "alt": "Placeholder art",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/09/shutterstock_2509793635.jpg",
+    "files": [
+      {
+        "src": "/images/stock/placeholder-art-2509793635-1600.webp",
+        "width": 1600,
+        "height": 1600,
+        "kb": 55
+      },
+      {
+        "src": "/images/stock/placeholder-art-2509793635-800.webp",
+        "width": 800,
+        "height": 800,
+        "kb": 29
+      }
+    ]
+  },
+  {
+    "key": "pricing-placeholder-2509264807",
+    "group": "stock",
+    "alt": "Pricing Placeholder",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/09/shutterstock_2509264807-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/stock/pricing-placeholder-2509264807-1600.webp",
+        "width": 1600,
+        "height": 1068,
+        "kb": 89
+      },
+      {
+        "src": "/images/stock/pricing-placeholder-2509264807-800.webp",
+        "width": 800,
+        "height": 534,
+        "kb": 38
+      }
+    ]
+  },
+  {
+    "key": "single-office-space-placeholder-image",
+    "group": "stock",
+    "alt": "single office space placeholder image",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/10/ComingSoon-cover-scaled.png",
+    "files": [
+      {
+        "src": "/images/stock/single-office-space-placeholder-image-1600.webp",
+        "width": 1600,
+        "height": 1068,
+        "kb": 45
+      },
+      {
+        "src": "/images/stock/single-office-space-placeholder-image-800.webp",
+        "width": 800,
+        "height": 534,
+        "kb": 20
+      }
+    ]
+  },
+  {
+    "key": "table-mountain-placeholder",
+    "group": "stock",
+    "alt": "Table Mountain Placeholder",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/09/shutterstock_2499426023-1-scaled.png",
+    "files": [
+      {
+        "src": "/images/stock/table-mountain-placeholder-1600.webp",
+        "width": 1600,
+        "height": 889,
+        "kb": 61
+      },
+      {
+        "src": "/images/stock/table-mountain-placeholder-800.webp",
+        "width": 800,
+        "height": 445,
+        "kb": 22
+      }
+    ]
+  },
+  {
+    "key": "thank-you-page-placeholder-2355314543",
+    "group": "stock",
+    "alt": "Thank you Page Placeholder",
+    "original": "https://coworkcapetown.com/wp-content/uploads/2025/09/shutterstock_2355314543-scaled.jpg",
+    "files": [
+      {
+        "src": "/images/stock/thank-you-page-placeholder-2355314543-1600.webp",
+        "width": 1600,
+        "height": 1067,
+        "kb": 193
+      },
+      {
+        "src": "/images/stock/thank-you-page-placeholder-2355314543-800.webp",
+        "width": 800,
+        "height": 533,
+        "kb": 54
+      }
+    ]
+  }
+]

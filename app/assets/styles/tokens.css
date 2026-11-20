@@ -1,0 +1,86 @@
+/* Design tokens: the black and white system (2026-11-18), copied from
+   _context/designs/design-system-bw/tokens.css. The only place colours, glows, motion and corners come from. */
+:root {
+  color-scheme: dark;
+
+  /* Colour: black and white carry the page; pink is never a colour of things, only light */
+  --black: #000000;
+  --white: #ffffff;
+  --ink-2: #333333;
+  --grey: #9a9a9a;
+  --muted: #bdbdbd;        /* secondary text on black */
+  --muted-dark: #555555;   /* secondary text on white */
+  --line-dark: #222222;
+  --line-light: #e4e4e4;
+  --line-mid: #2e2e2e;      /* rules between rows on black */
+  --line-strong: #3a3a3a;   /* fact dividers on black */
+  --tube-core: #ffe3ef;    /* the white-pink core of a lit tube */
+  --pink: #ff0062;
+  --pink-glow: #ff0080;
+
+  /* Glows (light only, never paint) */
+  --tube: 0 0 4px #ff55a1, 0 0 12px #ff0062, 0 0 28px rgba(255, 0, 128, 0.55);
+  --lit-text: 0 0 0.143em #ff0080, 0 0 0.143em #ff0080, 0 0 0.071em #ff0080, 0 0 0.143em #ff0080;
+  --glow-icon: drop-shadow(0 0 7px rgba(255, 0, 128, 0.7)) drop-shadow(0 0 7px rgba(255, 0, 128, 0.7)) drop-shadow(0 0 3.5px rgba(255, 0, 128, 0.7));
+  --glow-icon-off: drop-shadow(0 0 0 rgba(255, 0, 128, 0)) drop-shadow(0 0 0 rgba(255, 0, 128, 0)) drop-shadow(0 0 0 rgba(255, 0, 128, 0));
+  /* Selected text: a faded wash of pink light (trial, 2026-11-19). Raise or lower the last number to taste. */
+  --select-on-black: rgba(255, 0, 128, 0.4);
+  --select-on-white: rgba(255, 0, 128, 0.2);
+
+  /* Motion: objects move first, light follows; neon flickers on, never pulses */
+  --dur-press: 90ms;
+  --dur-quick: 160ms;
+  --dur-glow: 220ms;
+  --dur-grow: 280ms;
+  --dur-panel: 420ms;
+  --dur-reveal: 760ms;
+  --dur-ignite: 900ms;
+  --delay-glow: 60ms;
+  --stagger: 70ms;
+  --ease-snap: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-press: cubic-bezier(0.2, 0, 0, 1);
+  --ease-swing: cubic-bezier(0.37, 0, 0.63, 1);
+  --ease-draw: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Corners: soft 12px for every block, pills for things you tap, circles for round buttons, square for the logo
+     and the small label badges */
+  --radius: 12px;
+  --radius-sm: 12px;
+  --r-pill: 999px;
+  --r-circle: 50%;
+
+  /* Type */
+  --font-sans: 'Archivo Variable', 'Archivo', system-ui, sans-serif;
+  --font-script: 'Mr Dafoe', cursive;
+
+  /* Type scale (2026-11-19). Heavy, wide capitals read big, so headings sit a step below the design boards.
+     The hero sizes also follow the window's height, so a laptop at 125% scaling sees the whole hero. */
+  --fs-display: clamp(48px, min(6.4vw, 10.5vh), 88px);  /* the Home name */
+  --fs-h1: clamp(34px, min(3.6vw, 7.4vh), 54px);        /* inner page H1s: long keyword lines */
+  /* H2 and H3 are set from the H1, so a section heading can never outrank the page's H1 */
+  --fs-h2: calc(var(--fs-h1) * 0.8);                    /* 27 to 43px */
+  --fs-h3: calc(var(--fs-h1) * 0.6);                    /* 20 to 32px */
+  --fs-card: max(19px, calc(var(--fs-h1) * 0.52));      /* names on cards (offices, rooms, guides, posts): 19 to 28px */
+  --fs-band: calc(var(--fs-h1) * 0.9);                  /* the closing band: a step under the H1 */
+  --fs-script: clamp(40px, min(4.6vw, 8.5vh), 60px);    /* the rotating words */
+  /* Figures and numerals are display type too, so they follow the H1 and stay under the H2 */
+  --fs-figure: calc(var(--fs-h1) * 0.74);               /* fact values, prices, the 24/7 card: 25 to 40px */
+  --fs-figure-lg: calc(var(--fs-h1) * 0.95);            /* the 2 by 2 big facts */
+  --fs-step: var(--fs-h2);                              /* step numerals */
+  /* Text */
+  --fs-body: 16px;
+  --fs-lead: 17px;
+
+  /* Layout */
+  --wrap: 1240px;
+  --gutter: clamp(20px, 4vw, 40px);
+  --header-h: 4.75rem;
+  --sec-y: clamp(56px, 7vw, 96px);
+  /* No decorative piece is taller than the screen: strip lights and the band shrink with the window's height too */
+  --sl-max: min(1440px, 150vh);
+  --card-img: clamp(160px, 27vh, 210px);   /* photo on office and room cards */
+
+  /* Assets */
+  --mountain-line: url('/images/brand/mountain-line.webp'); /* the logo's line, used as a mask */
+}

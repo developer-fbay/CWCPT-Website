@@ -1,0 +1,4 @@
+# Cloudflare applies these before serving files: real 301s for old addresses.
+/gallery /location 301
+/book-a-tour /contact-us 301
+/contact /contact-us 301

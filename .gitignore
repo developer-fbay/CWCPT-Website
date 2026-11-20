@@ -1,0 +1,17 @@
+node_modules
+.nuxt
+.output
+.data
+dist
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+.wrangler
+
+# Private planning and design notes: never push
+_context/
+
+# Original media pulled from the old WordPress site (large; web versions live in public/images)
+_media-source/

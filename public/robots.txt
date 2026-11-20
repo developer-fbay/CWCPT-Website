@@ -1,0 +1,78 @@
+# coworkcapetown.com: all verified search engine and AI crawlers are welcome.
+# Internal tooling and API routes are off-limits for everyone.
+# /admin is kept for a future blog upload screen.
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/
+
+# --- Search engines (same rules, stated explicitly) ---
+User-agent: Googlebot
+Allow: /
+Disallow: /admin
+Disallow: /api/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /admin
+Disallow: /api/
+
+# --- AI assistants & crawlers ---
+User-agent: GPTBot
+Allow: /
+Disallow: /admin
+Disallow: /api/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin
+Disallow: /api/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin
+Disallow: /api/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin
+Disallow: /api/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /admin
+Disallow: /api/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /admin
+Disallow: /api/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin
+Disallow: /api/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /admin
+Disallow: /api/
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+Disallow: /admin
+Disallow: /api/
+
+User-agent: meta-externalagent
+Allow: /
+Disallow: /admin
+Disallow: /api/
+
+Sitemap: https://coworkcapetown.com/sitemap.xml

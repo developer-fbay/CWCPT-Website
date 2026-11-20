@@ -1,0 +1,275 @@
+/* The black and white system's components, from _context/designs/design-system-bw/components.css and the HomeBW
+   board (home-board.css). Global classes on purpose: every page and component composes them, so a change here
+   changes the site. Values are the design system's; sizes are made fluid for phones. */
+
+/* ---------- Buttons: grow 280ms snap, the tube catches 60ms later, press 90ms ---------- */
+.btn {
+  position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 15px 26px; font-weight: 800; font-size: 15px; line-height: 1; text-decoration: none;
+  border-radius: var(--radius-sm); border: 2px solid transparent; font-family: inherit; cursor: pointer;
+  white-space: nowrap; transition: transform var(--dur-grow) var(--ease-snap);
+}
+.btn::after {
+  content: ''; position: absolute; inset: -2px; border-radius: var(--radius-sm);
+  border: 2px solid var(--tube-core); box-shadow: var(--tube); opacity: 0; pointer-events: none;
+}
+.btn:focus-visible { outline: none; box-shadow: none; }
+.btn:focus-visible::after { animation: catch var(--dur-glow) linear var(--delay-glow) both; }
+@media (hover: hover) {
+  .btn:hover { transform: scale(1.04); }
+  .btn:hover::after { animation: catch var(--dur-glow) linear var(--delay-glow) both; }
+}
+.btn:active { transform: scale(0.97); transition-duration: var(--dur-press); transition-timing-function: var(--ease-press); }
+.btn[disabled] { opacity: 0.35; pointer-events: none; }
+.btn-white, .btn-white:hover { background: var(--white); color: var(--black); }
+.btn-black, .btn-black:hover { background: var(--black); color: var(--white); }
+.btn-ghost, .btn-ghost:hover { background: transparent; color: var(--white); border-color: rgba(255, 255, 255, 0.75); }
+.btn-ghost-dark, .btn-ghost-dark:hover { background: transparent; color: var(--black); border-color: var(--black); }
+.btn-sm { padding: 11px 18px; font-size: 14px; }
+@keyframes catch { 0% { opacity: 0 } 30% { opacity: 0.75 } 45% { opacity: 0.3 } 62% { opacity: 0.95 } 78% { opacity: 0.7 } 100% { opacity: 1 } }
+
+/* ---------- Text link with arrow: words and arrow on one centre line, underline draws from the left ---------- */
+.tlink {
+  display: inline-flex; align-items: center; gap: 9px; font-weight: 800; font-size: 15px; line-height: 1.2;
+  text-decoration: none; padding: 5px 0;
+  background: linear-gradient(currentColor, currentColor) left bottom / 0% 2px no-repeat;
+  transition: background-size var(--dur-grow) var(--ease-snap);
+}
+.tlink .arr { display: inline-flex; align-items: center; flex: none; transition: transform var(--dur-grow) var(--ease-snap), filter var(--dur-glow) var(--ease-out) var(--delay-glow); }
+.tlink .arr svg { display: block; width: 15px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.tlink:hover { background-size: 100% 2px; }
+.tlink:hover .arr { transform: translateX(6px); }
+.tlink-light:hover .arr { filter: drop-shadow(0 0 1.5px #ffffff) var(--glow-icon); }
+
+/* ---------- Tags (square, like the logo's block) and chips (pills you tap) ---------- */
+.tag {
+  border-radius: 0; display: inline-flex; align-items: center; gap: 6px; padding: 7px 11px;
+  font-size: 11px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; line-height: 1;
+}
+.tag-solid { background: var(--white); color: var(--black); }
+.tag-solid-dark { background: var(--black); color: var(--white); }
+.tag-line { border: 2px solid currentColor; padding: 5px 9px; }
+/* Light bar: a short lit tube on the badge's left edge, for the one thing worth noticing */
+.tag-bar { position: relative; padding-left: 16px; white-space: nowrap; }
+.tag-bar::before {
+  content: ''; position: absolute; left: 5px; top: 4px; bottom: 4px; width: 3px; border-radius: 999px;
+  background: var(--tube-core); box-shadow: 0 0 3px #ff55a1, 0 0 7px #ff0062, 0 0 12px rgba(255, 0, 128, 0.55);
+}
+.tag-line.tag-bar { padding-left: 14px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: var(--r-pill);
+  border: 2px solid rgba(255, 255, 255, 0.7); font-weight: 800; font-size: 14px; text-decoration: none; color: var(--white);
+  transition: transform var(--dur-grow) var(--ease-snap), background-color var(--dur-quick) var(--ease-out), color var(--dur-quick) var(--ease-out), border-color var(--dur-quick) var(--ease-out), box-shadow var(--dur-glow) var(--ease-out) var(--delay-glow);
+}
+.chip small { font-weight: 600; opacity: 0.7; font-size: 12px; }
+.chip.is-let { opacity: 0.55; }
+.on-white .chip { border-color: var(--black); color: var(--black); }
+@media (hover: hover) {
+  .chip:hover { transform: scale(1.06); background: var(--white); color: var(--black); border-color: var(--tube-core); box-shadow: var(--tube); }
+  .on-white .chip:hover { background: var(--black); color: var(--white); }
+}
+
+/* ---------- Cards: lift 6px from the bottom edge, the tube catches after ---------- */
+.lift { position: relative; transform-origin: 50% 100%; transition: transform var(--dur-grow) var(--ease-snap); }
+.lift::after {
+  content: ''; position: absolute; inset: -2px; border-radius: inherit; border: 2px solid var(--tube-core);
+  box-shadow: var(--tube); opacity: 0; pointer-events: none;
+}
+@media (hover: hover) {
+  .lift:hover { transform: translateY(-6px) scale(1.015); }
+  .lift:hover::after { animation: catch var(--dur-glow) linear var(--delay-glow) both; }
+  .lift:hover .zoom img, .zoom:hover img { transform: scale(1.07); }
+}
+.zoom { overflow: hidden; }
+.zoom img { width: 100%; height: 100%; object-fit: cover; transition: transform 900ms var(--ease-snap); }
+.card-w { background: var(--white); color: var(--black); border-radius: var(--radius); }
+.card-b { background: var(--black); color: var(--white); border-radius: var(--radius); border: 2px solid var(--white); }
+.card-w .dot { color: var(--black); text-shadow: none; }
+
+/* ---------- Section heading ---------- */
+.sh { display: flex; flex-direction: column; gap: 16px; }
+.h2 { font-size: var(--fs-h2); }
+.h1 { font-size: var(--fs-h1); }
+.h3 { font-size: var(--fs-h3); }
+.sec-top { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 28px 56px; align-items: end; }
+
+/* ---------- Facts ---------- */
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 24px 0; }
+.fact { display: flex; flex-direction: column; gap: 8px; padding: 0 24px; border-left: 2px solid currentColor; }
+.fact .v { font-size: var(--fs-figure); }
+.fact .l { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.4; }
+.bigf { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 34px 40px; }
+.bigf .v { display: block; font-size: var(--fs-figure-lg); line-height: 0.95; }
+.bigf .l { display: block; margin-top: 8px; font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); line-height: 1.4; }
+
+/* ---------- The ruled list with glowing icons ("More than just desks") ---------- */
+.why-list { display: flex; flex-direction: column; padding-top: 6px; }
+.why-list .row { flex-wrap: nowrap; gap: 18px; padding: 20px 0; border-bottom: 1px solid var(--line-mid); }
+.why-list .row p { font-size: var(--fs-lead); font-weight: 800; line-height: 1.3; }
+.ic { display: block; flex: none; width: 30px; height: 30px; filter: var(--glow-icon); }
+.icon-sq { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 54px; height: 54px; background: var(--black); border-radius: var(--radius); }
+@media (hover: hover) { .usp:hover .ic { animation: icon-stutter 1400ms linear infinite; } }
+@keyframes icon-stutter { 0%, 22%, 100% { opacity: 1; filter: var(--glow-icon) } 3% { opacity: 0.25; filter: var(--glow-icon-off) } 6% { opacity: 1; filter: var(--glow-icon) } 9% { opacity: 0.35; filter: var(--glow-icon-off) } 12% { opacity: 0.9; filter: var(--glow-icon) } 15% { opacity: 0.3; filter: var(--glow-icon-off) } }
+
+/* ---------- Divider: the same thin rule as the reasons grid, between two sections on the same colour ---------- */
+.divider { display: block; height: 0; margin: 0; border: 0; border-top: 1px solid var(--line-mid); }
+.on-white .divider { border-top-color: var(--line-light); }
+
+/* ---------- FAQ: black rules, plus turns into a cross; only the open question's "?" lights ---------- */
+.faq { border-top: 2px solid currentColor; }
+.faq-item { border-bottom: 2px solid currentColor; }
+.faq-q {
+  all: unset; box-sizing: border-box; width: 100%; display: flex; justify-content: space-between; align-items: center;
+  gap: 24px; padding: 26px 0; cursor: pointer; font-weight: 800; font-size: clamp(17px, 1.6vw, 20px); font-stretch: 106%; line-height: 1.25;
+}
+.faq-q:focus-visible { box-shadow: var(--tube); }
+.plus {
+  position: relative; flex: none; width: 34px; height: 34px; border-radius: var(--r-pill); border: 2px solid currentColor;
+  transition: transform var(--dur-panel) var(--ease-snap), background-color var(--dur-quick) var(--ease-out);
+}
+.plus::before, .plus::after { content: ''; position: absolute; left: 50%; top: 50%; width: 14px; height: 2px; background: currentColor; transform: translate(-50%, -50%); }
+.plus::after { transform: translate(-50%, -50%) rotate(90deg); }
+.faq-q:hover .plus { transform: scale(1.12); }
+.is-open .plus { transform: rotate(45deg); }
+.faq-q .qm { --qm-a: 0.72; position: relative; display: inline-block; }
+.faq-q .qm-core { position: absolute; left: 0; top: 0; color: #ffffff; opacity: 0; pointer-events: none; transition: opacity var(--dur-quick) var(--ease-out); }
+.is-open .faq-q .qm {
+  color: #ff0a78; -webkit-text-stroke: 2px #ff0a78; paint-order: stroke fill;
+  text-shadow: 0 0 6px rgba(255, 31, 122, 0.8), 0 0 16px rgba(255, 0, 128, 0.5), 0 0 32px rgba(255, 0, 128, 0.28);
+  animation: qm-on var(--dur-ignite) linear both;
+}
+.is-open .faq-q .qm-core { opacity: 1; -webkit-text-stroke: 1.5px #ff3d92; paint-order: normal; text-shadow: none; filter: drop-shadow(0 0 0.8px #ffffff); }
+@keyframes qm-on { 0% { opacity: calc(var(--qm-a) * 0.25) } 8% { opacity: calc(var(--qm-a) * 1) } 12% { opacity: calc(var(--qm-a) * 0.3) } 24% { opacity: calc(var(--qm-a) * 0.45) } 30% { opacity: calc(var(--qm-a) * 0.95) } 38% { opacity: calc(var(--qm-a) * 0.5) } 52% { opacity: calc(var(--qm-a) * 1) } 60% { opacity: calc(var(--qm-a) * 0.8) } 100% { opacity: calc(var(--qm-a) * 1) } }
+.faq-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows var(--dur-panel) var(--ease-snap); }
+.faq-a > div { overflow: hidden; }
+.faq-a .prose { padding: 0 clamp(0px, 6vw, 80px) 28px 0; }
+.is-open .faq-a { grid-template-rows: 1fr; }
+
+/* ---------- Forms ---------- */
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field label, .field .flabel { font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+.input {
+  all: unset; box-sizing: border-box; width: 100%; padding: 14px 16px; border: 2px solid var(--black);
+  border-radius: var(--radius-sm); font-size: 16px; font-family: inherit; color: var(--black); background: var(--white);
+  transition: box-shadow var(--dur-glow) var(--ease-out) var(--delay-glow);
+}
+textarea.input { white-space: pre-wrap; min-height: 96px; }
+select.input { appearance: none; background-image: linear-gradient(45deg, transparent 50%, #000 50%), linear-gradient(135deg, #000 50%, transparent 50%); background-position: calc(100% - 22px) 50%, calc(100% - 16px) 50%; background-size: 6px 6px; background-repeat: no-repeat; }
+.input::placeholder { color: #8a8a8a; }
+.input:focus { box-shadow: 0 0 0 2px var(--black), var(--tube); }
+.input[aria-invalid='true'] { border-style: dashed; }
+.err { font-size: 13px; font-weight: 700; display: flex; gap: 6px; align-items: center; }
+.tabs { display: inline-flex; flex-wrap: wrap; padding: 5px; border-radius: var(--r-pill); border: 2px solid var(--black); gap: 4px; }
+.tabbtn {
+  all: unset; cursor: pointer; padding: 11px 18px; border-radius: var(--r-pill); font-weight: 800; font-size: 14px;
+  transition: background-color var(--dur-quick) var(--ease-out), color var(--dur-quick) var(--ease-out), transform var(--dur-grow) var(--ease-snap);
+}
+.tabbtn:hover { transform: scale(1.04); }
+.tabbtn:focus-visible { box-shadow: var(--tube); }
+.tabbtn.sel { background: var(--black); color: var(--white); }
+.seg { display: inline-flex; padding: 5px; border-radius: var(--r-pill); border: 2px solid rgba(255, 255, 255, 0.75); gap: 4px; }
+.seg .tabbtn.sel { background: var(--white); color: var(--black); }
+.check { display: flex; gap: 12px; align-items: flex-start; font-size: 14px; line-height: 1.5; }
+.check input { width: 20px; height: 20px; margin: 1px 0 0; accent-color: var(--black); border-radius: 5px; flex: none; }
+
+/* ---------- Detail table (office cards) ---------- */
+.dt { display: grid; grid-template-columns: 110px 1fr; border-top: 2px solid currentColor; }
+.dt > * { padding: 12px 0; border-bottom: 1px solid #d8d8d8; font-size: 15px; margin: 0; }
+.dt dt { font-size: 11px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; padding-top: 15px; }
+.card-b .dt > * { border-color: #333333; }
+
+/* ---------- Steps ---------- */
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 40px; }
+.step { display: flex; flex-direction: column; gap: 16px; border-top: 4px solid currentColor; padding-top: 22px; }
+.step-n { font-size: var(--fs-step); line-height: 0.8; }
+
+/* ---------- Header links: an underline draws in ---------- */
+.nav a { text-decoration: none; font-size: 15px; font-weight: 700; position: relative; padding: 6px 0; }
+.nav a::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform var(--dur-grow) var(--ease-snap); }
+.nav a:hover::after, .nav a.router-link-active::after { transform: scaleX(1); }
+
+/* ---------- Marquee ---------- */
+.marq-wrap { overflow: hidden; }
+.marq { display: flex; gap: 16px; width: max-content; animation: marq 60s linear infinite; }
+.marq.rev { animation-direction: reverse; animation-duration: 70s; }
+.marq-wrap:hover .marq { animation-play-state: paused; }
+@keyframes marq { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+
+/* ---------- The lit star (Google rating) ---------- */
+.star-wrap { display: inline-flex; align-items: center; justify-content: center; }
+.star { display: block; width: 28px; height: 28px; filter: var(--glow-icon); }
+.on-white .star-wrap, .card-w .star-wrap { width: 42px; height: 42px; background: var(--black); border-radius: var(--radius); }
+.on-white .star, .card-w .star { width: 24px; height: 24px; }
+
+/* ---------- The mountain line (the logo's line) as a mask over photos ---------- */
+.line-mask { -webkit-mask: var(--mountain-line) center / contain no-repeat; mask: var(--mountain-line) center / contain no-repeat; background-color: var(--white); }
+
+/* ---------- Panels and avatars ---------- */
+.panel { border: 1px solid #2a2a2a; border-radius: var(--radius); padding: clamp(24px, 4vw, 40px); }
+.on-white .panel { border-color: #d8d8d8; }
+.avatar { width: 44px; height: 44px; border-radius: var(--r-pill); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 15px; flex: none; }
+
+/* ---------- The strip light: the white-pink LED strip from the office walls ---------- */
+.sl { display: block; overflow: visible; width: 100%; height: auto; }
+.sl path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.sl .osh { stroke: rgba(0, 0, 0, 0); stroke-width: 8; filter: url(#sl-shadow); }
+.sl .o { stroke: #6b6668; stroke-width: 7; }
+.sl .oh { stroke: #a7a1a4; stroke-width: 2; }
+.sl .wash { stroke: #ff0080; stroke-width: 66; opacity: 0.2; filter: url(#sl-wash); }
+.sl .far { stroke: #ff1f7a; stroke-width: 34; opacity: 0.55; filter: url(#sl-far); transition: opacity 220ms var(--ease-out); }
+.sl .near { stroke: #ff5fa8; stroke-width: 18; opacity: 0.9; filter: url(#sl-near); }
+.sl .edge { stroke: #ffaccd; stroke-width: 6.5; }
+.sl .tube { stroke: #ffe6ef; stroke-width: 4.5; }
+.sl .core { stroke: #ffffff; stroke-width: 2.6; filter: url(#sl-soft); }
+.sl .bleed { fill: #ff4d9a; opacity: 0.45; filter: url(#sl-near); }
+.sl .spark { stroke: #ffffff; stroke-width: 5; stroke-dasharray: 0.03 0.97; stroke-dashoffset: 0.03; filter: url(#sl-spark); opacity: 0; }
+.sl .clip-shadow { fill: rgba(0, 0, 0, 0); }
+.sl .clip-base { fill: rgba(235, 235, 242, 0.12); stroke: rgba(255, 255, 255, 0.4); stroke-width: 0.8; }
+.sl .clip-bridge { fill: rgba(255, 255, 255, 0.18); stroke: rgba(255, 255, 255, 0.55); stroke-width: 0.7; }
+.sl .screw { fill: url(#sl-screw); stroke: #262626; stroke-width: 0.6; }
+.sl .cap-body { stroke: rgba(0, 0, 0, 0.35); stroke-width: 0.6; }
+.sl .cap-seam { fill: rgba(0, 0, 0, 0.18); }
+.sl-white .osh { stroke: rgba(0, 0, 0, 0.16); }
+.sl-white .o { stroke: #e6e1e3; }
+.sl-white .oh { stroke: #ffffff; }
+.sl-white .wash { opacity: 0.16; }
+.sl-white .far { opacity: 0.42; }
+.sl-white .clip-shadow { fill: rgba(0, 0, 0, 0.14); }
+.sl-white .clip-base { fill: rgba(255, 255, 255, 0.7); stroke: #c4c4c4; }
+.sl-white .clip-bridge { fill: rgba(255, 255, 255, 0.55); stroke: #c9c9c9; }
+.sl-hover:hover .sl .far { opacity: 0.78; }
+/* Off until its section is in view, then it flickers on, hums, and a spark runs along it */
+.rv-ready .sl .lit { opacity: 0; }
+[data-in] .sl .lit { opacity: 1; animation: sl-ignite 900ms linear 600ms both, sl-hum 9000ms linear 1500ms infinite; }
+[data-in] .sl .spark { animation: sl-spark 6000ms linear 3200ms infinite; }
+[data-in] .sl .sway { animation: sag 6400ms var(--ease-swing) infinite alternate; }
+[data-in] .sl .spark.sway { animation: sl-spark 6000ms linear 3200ms infinite, sag 6400ms var(--ease-swing) infinite alternate; }
+@keyframes sag { from { d: path('M40 46 L64 46 Q680 196 1296 46 L1320 46') } to { d: path('M40 46 L64 46 Q716 188 1296 46 L1320 46') } }
+@keyframes sl-ignite { 0% { opacity: 0.06 } 8% { opacity: 0.9 } 12% { opacity: 0.08 } 24% { opacity: 0.15 } 30% { opacity: 0.85 } 38% { opacity: 0.3 } 52% { opacity: 1 } 60% { opacity: 0.72 } 100% { opacity: 1 } }
+@keyframes sl-hum { 0%, 68%, 70.5%, 84%, 85.4%, 100% { opacity: 1 } 69% { opacity: 0.78 } 69.6% { opacity: 0.95 } 84.7% { opacity: 0.86 } }
+@keyframes sl-spark { 0% { stroke-dashoffset: 0.03; opacity: 1 } 40% { stroke-dashoffset: -1; opacity: 1 } 40.5%, 100% { stroke-dashoffset: -1; opacity: 0 } }
+
+/* ---------- Scroll reveal: plays once when a section is 20% in view. Content is visible by default; the hidden
+   states only apply once the reveal plugin has armed (html.rv-ready), so no-JS and crawlers see everything. ---------- */
+.mask { display: block; overflow: hidden; padding-bottom: 0.04em; }
+.mask > span { display: block; }
+.rv-ready [data-rv]:not([data-in]) :is(.r-label, .r-body, .r-btns, .r-item) { opacity: 0; }
+.rv-ready [data-rv]:not([data-in]) .mask > span { transform: translateY(105%); }
+.rv-ready [data-rv]:not([data-in]) .r-media { clip-path: inset(100% 0 0 0); }
+[data-in] .r-label { animation: fadeup 480ms var(--ease-out) 0ms both; }
+[data-in] .mask > span { animation: rise var(--dur-reveal) var(--ease-snap) calc(80ms + var(--l, 0) * 90ms) both; }
+[data-in] .r-media { animation: clipup 900ms var(--ease-snap) 260ms both; }
+[data-in] .r-media img { animation: settle 1200ms var(--ease-snap) 260ms both; }
+[data-in] .r-body { animation: fadeup 600ms var(--ease-out) 300ms both; }
+[data-in] .r-btns { animation: fadeup 520ms var(--ease-out) 380ms both; }
+[data-in] .r-item { animation: fadeup 640ms var(--ease-snap) calc(420ms + min(var(--i, 0), 5) * 70ms) both; }
+@keyframes fadeup { from { opacity: 0; translate: 0 20px } to { opacity: 1; translate: 0 0 } }
+@keyframes rise { from { transform: translateY(105%) } to { transform: translateY(0) } }
+@keyframes clipup { from { clip-path: inset(100% 0 0 0) } to { clip-path: inset(0 0 0 0) } }
+@keyframes settle { from { scale: 1.12 } to { scale: 1 } }
+
+@media (prefers-reduced-motion: reduce) {
+  .rv-ready [data-rv] * { opacity: 1 !important; transform: none !important; clip-path: none !important; }
+  .sl .lit { opacity: 1 !important; }
+  .sl .spark { display: none; }
+}
