@@ -36,7 +36,7 @@ import { hero } from '~/data/home'
       <div class="hh__art">
         <div class="hh__block r-media" role="img" :aria-label="hero.video.label">
           <!-- The 16:9 still covers a square of up to 540px, so it is drawn 16/9 as wide as the square -->
-          <BackgroundVideo :vimeo-id="hero.video.vimeoId" :poster="hero.video.poster" sizes="(max-width: 600px) 164vw, 960px" />
+          <BackgroundVideo :vimeo-id="hero.video.vimeoId" :poster="hero.video.poster" :jumps="hero.video.jumps" sizes="(max-width: 600px) 164vw, 960px" />
           <div class="hh__shade" />
           <div class="line-mask hh__line" aria-hidden="true" />
         </div>

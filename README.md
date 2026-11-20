@@ -90,6 +90,8 @@ in markdown, commit and push. The file name is the address (`/blog/your-post-add
   A whole page built ahead of its content goes in `hiddenPages` (`app/data/site.ts`): it answers 404, links to it
   disappear and it stays out of the sitemap. PLAN.md lists what each hidden part needs.
 - Every main page has its own share image: add the page to `app/data/og.json` and run `npm run og`.
+- The Home hero video can skip parts of the clip: `jumps` in `app/data/home.ts` ("at X seconds, jump to Y"). Open
+  the Home page with `?video-time` in the address to see the playing time and find the seconds.
 - British English, no em dashes. Members use "tags", not "access cards". Review and FAQ text word for word.
 - Prices in £ first, with the rand figure beside them as the approved copy gives it. Other currencies appear only
   through the Pricing display switch, converted at a confirmed, dated rate.

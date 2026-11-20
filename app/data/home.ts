@@ -32,6 +32,10 @@ export const hero = {
       src: '/images/hero/home-hero-poster-960.webp',
       srcset: '/images/hero/home-hero-poster-960.webp 960w, /images/hero/home-hero-poster-1920.webp 1920w',
     },
+    // Parts of the video to skip, in seconds: at `at` the player jumps to `to`. Hides the YouTube subscribe badge
+    // in the licensed footage (Jesse, 2026-11-20). Find the seconds with ?video-time in the address; start `at`
+    // half a second before the badge appears. To cut the end off instead, jump back to 0.
+    jumps: [] as { at: number; to: number }[],
   },
   card: { label: 'Access', value: '24/7', note: 'Tap your tag' },
 }
