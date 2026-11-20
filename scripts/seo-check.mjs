@@ -2,7 +2,7 @@
 //   npm run seo:check
 // Errors (exit code 1): missing title, description or canonical, not exactly one H1, an <img> without alt,
 // a missing image or share image, broken JSON-LD, robots.txt or sitemap.xml missing or wrong, a page missing
-// from the sitemap, Cloudflare set to add a slash to addresses, two Cache-Control values for one file. Warnings: long titles and descriptions, [brackets] in alt text or meta, big images,
+// from the sitemap. Warnings: long titles and descriptions, [brackets] in alt text or meta, big images,
 // images without width and height, CSS or JS that isn't minified. Info: images in public/images no page uses.
 import fs from 'node:fs'
 import path from 'node:path'
@@ -115,23 +115,6 @@ else {
     const r = l.replace(siteUrl, '') || '/'
     if (r !== '/' && r.endsWith('/')) err('sitemap.xml', `${l} ends with a slash`)
     if (!pages.some((p) => p.route === r.replace(/\/$/, '') || (r === '/' && p.route === '/'))) err('sitemap.xml', `${l} has no page in the build`)
-  }
-}
-
-// --- Cloudflare: addresses without a slash, one cache value per file ---
-const wranglerFile = path.join(root, '.output', 'server', 'wrangler.json')
-if (fs.existsSync(wranglerFile)) {
-  const handling = JSON.parse(fs.readFileSync(wranglerFile, 'utf8')).assets?.html_handling
-  if (handling !== 'drop-trailing-slash') err('wrangler.json', `html_handling is "${handling ?? 'auto-trailing-slash (default)'}": Cloudflare would redirect /about to /about/`)
-}
-const headersFile = path.join(pub, '_headers')
-if (fs.existsSync(headersFile)) {
-  const blocks = fs.readFileSync(headersFile, 'utf8').split(/\n(?=\/)/).filter((b) => b.startsWith('/'))
-  let cacheSetBefore = false
-  for (const b of blocks) {
-    const sets = /^\s+cache-control:/im.test(b)
-    if (sets && cacheSetBefore && !/^\s+! cache-control/im.test(b)) err('_headers', `${b.split('\n')[0]} sets Cache-Control without "! Cache-Control", so Cloudflare would join two values`)
-    cacheSetBefore ||= sets
   }
 }
 

@@ -7,9 +7,8 @@ The from-scratch rebuild of coworkcapetown.com in Nuxt 4 (Vue 3). Read `PLAN.md`
 ```bash
 npm install
 npm run dev        # http://localhost:3000
-npm run build      # production build, prerenders every page
-npm run preview    # serve the production build locally
-npx wrangler --cwd .output dev   # serve the build the way Cloudflare Workers will
+npm run build      # production build (a Node server), prerenders every page
+npm start          # serve the build exactly as DigitalOcean runs it (PORT=3001 npm start for another port)
 npm run images     # make web images (WebP) in public/images from the originals in _media-source/
 npm run seo:check  # after a build: titles, descriptions, canonicals, H1s, alt text, images, sitemap, robots.txt
 ```
@@ -21,9 +20,11 @@ Run `npm run build` then `npm run seo:check` before every deploy. Errors fail it
 
 Caching (set in `nuxt.config.ts`, explained at the top of it): pages are prerendered HTML that browsers check on
 every visit, so a deploy shows at once; `/_nuxt` files are hashed and kept a year; images and icons are kept 30
-days, so give a replaced photo a new file name; `/api` is never cached. Cloudflare serves `/about` and sends
-`/about/` to it (`html_handling: drop-trailing-slash`). `modules/cloudflare-headers.ts` orders `_headers` so each
-file gets one Cache-Control value. Every blog post is prerendered, even ones only reachable through "Load more".
+days, so give a replaced photo a new file name; `/api` is never cached. Pages, scripts and styles are stored
+compressed (Brotli and gzip) at build time. Addresses ending in a slash get a 301 to the one without
+(`server/plugins/trailing-slash.ts`). Every blog post is prerendered, even ones only reachable through "Load more".
+On any host but coworkcapetown.com (the DigitalOcean preview, localhost) every response says
+`X-Robots-Tag: noindex, nofollow` (`server/plugins/preview-noindex.ts`), so the preview never gets indexed.
 
 Needs Node 22 or newer. Copy `.env.example` to `.env` (never commit `.env`).
 
@@ -33,22 +34,21 @@ add `-- --force` to remake them all.
 
 ## Deploy
 
-The same code builds for either host; `NITRO_PRESET` picks which (Cloudflare when it is not set).
-
-**DigitalOcean App Platform** (a Web Service, not a Static Site: the contact form needs the server):
+DigitalOcean App Platform, from this repo's `main` (decided with Codi, 2026-11-20). Create the app as a
+**Web Service**, not a Static Site: the contact form needs the server part.
 
 | Setting | Value |
 |---|---|
 | Build command | `npm run build` (App Platform runs `npm ci` first) |
-| Run command | `node .output/server/index.mjs` |
+| Run command | `npm start` |
 | HTTP port | `8080` (App Platform passes it as `PORT`, which the server reads) |
 | Node | 22 or newer, from `engines` in `package.json` (builds tested on Node 24) |
-| Env, build time | `NITRO_PRESET=node-server`, `NUXT_PUBLIC_SITE_URL=https://coworkcapetown.com` |
 | Env, run time (encrypted) | `NUXT_N8N_CONTACT_WEBHOOK`, `NUXT_N8N_WEBHOOK_SECRET` (and the Supabase ones if used) |
 
-**Cloudflare Workers:** build command `npm run build`, deploy with `npx wrangler deploy -c .output/server/wrangler.json`;
-set the same env values in the Worker's settings. `_headers` and `_redirects` only apply on Cloudflare; on
-DigitalOcean the same caching and redirects come from `routeRules` and `server/plugins/trailing-slash.ts`.
+`NUXT_PUBLIC_SITE_URL` defaults to `https://coworkcapetown.com`. Leave it, even on the preview: canonicals and
+the sitemap must name the real address, never the `*.ondigitalocean.app` one. Pushing to `main` deploys, so run
+`npm run build` and `npm run seo:check` first. Old addresses that changed get a 301 in `routeRules`
+(`nuxt.config.ts`).
 
 ## Where things are
 

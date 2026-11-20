@@ -1,5 +1,5 @@
-// The blog's posts: markdown files in content/blog/ (bundled as Nitro server assets, so it works on Cloudflare
-// with no file system). Every post page is prerendered to static HTML at build time.
+// The blog's posts: markdown files in content/blog/ (bundled as Nitro server assets, so it works with no
+// content folder on the server). Every post page is prerendered to static HTML at build time.
 // A post = YAML frontmatter + markdown body. See content/blog/README.md for how to add one.
 import { Marked } from 'marked'
 import { parse as parseYaml } from 'yaml'
