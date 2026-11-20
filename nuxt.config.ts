@@ -11,8 +11,9 @@ const blogRoutes = readdirSync(new URL('./content/blog/', import.meta.url))
   .map((f) => `/blog/${f.replace(/\.md$/, '')}`)
 
 // Caching, in three layers:
-// 1. Pages: prerendered HTML served from Cloudflare's edge. Cloudflare's default (max-age=0, must-revalidate,
-//    with an ETag) lets browsers keep a copy but check it each visit, so a deploy shows at once.
+// 1. Pages: prerendered HTML with max-age=0, must-revalidate (and an ETag): browsers keep a copy but check it
+//    each visit, so a deploy shows at once. Addresses ending in a slash get a 301 to the one without
+//    (Cloudflare: html_handling below; Node server: server/plugins/trailing-slash.ts).
 // 2. Files: /_nuxt (JS, CSS, fonts) have a hash in their names and are kept a year (Nuxt's rule); images and
 //    icons are kept 30 days (below). modules/cloudflare-headers.ts orders _headers so each file gets one value.
 // 3. The Worker: /api is never cached (below). Unknown addresses get the 404 page from the Worker, uncached.
@@ -79,9 +80,10 @@ export default defineNuxtConfig({
     },
   },
 
-  // Prerender every page that has no live data. Build for Cloudflare Workers.
+  // Prerender every page that has no live data. Builds for Cloudflare Workers unless NITRO_PRESET says otherwise:
+  // NITRO_PRESET=node-server builds a Node server for DigitalOcean App Platform (run: node .output/server/index.mjs).
   nitro: {
-    preset: 'cloudflare_module',
+    preset: process.env.NITRO_PRESET || 'cloudflare_module',
     cloudflare: {
       deployConfig: true,
       nodeCompat: true,
@@ -96,6 +98,9 @@ export default defineNuxtConfig({
 
   // Old addresses, and no slash at the end of any address.
   routeRules: {
+    // Pages: browsers may keep a copy but must check it each visit, so a deploy shows at once. Cloudflare sends
+    // this by default; a Node server (DigitalOcean) sends nothing, and browsers would guess. Narrower rules win.
+    '/**': { headers: { 'cache-control': 'public, max-age=0, must-revalidate' } },
     // Browsers keep images and icons for 30 days (written to Cloudflare's _headers). Their file names don't change
     // when a photo does, so give a replaced photo a new name. /_nuxt files are hashed and cached for a year by Nuxt.
     '/images/**': { headers: { 'cache-control': 'public, max-age=2592000' } },

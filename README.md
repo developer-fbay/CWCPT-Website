@@ -31,6 +31,25 @@ Original photos and brand files live in `_media-source/` (git-ignored, too big f
 writes small WebP versions to `public/images/` and their sizes and alt text to `app/data/media.generated.json`;
 add `-- --force` to remake them all.
 
+## Deploy
+
+The same code builds for either host; `NITRO_PRESET` picks which (Cloudflare when it is not set).
+
+**DigitalOcean App Platform** (a Web Service, not a Static Site: the contact form needs the server):
+
+| Setting | Value |
+|---|---|
+| Build command | `npm run build` (App Platform runs `npm ci` first) |
+| Run command | `node .output/server/index.mjs` |
+| HTTP port | `8080` (App Platform passes it as `PORT`, which the server reads) |
+| Node | 22 or newer, from `engines` in `package.json` (builds tested on Node 24) |
+| Env, build time | `NITRO_PRESET=node-server`, `NUXT_PUBLIC_SITE_URL=https://coworkcapetown.com` |
+| Env, run time (encrypted) | `NUXT_N8N_CONTACT_WEBHOOK`, `NUXT_N8N_WEBHOOK_SECRET` (and the Supabase ones if used) |
+
+**Cloudflare Workers:** build command `npm run build`, deploy with `npx wrangler deploy -c .output/server/wrangler.json`;
+set the same env values in the Worker's settings. `_headers` and `_redirects` only apply on Cloudflare; on
+DigitalOcean the same caching and redirects come from `routeRules` and `server/plugins/trailing-slash.ts`.
+
 ## Where things are
 
 | Folder | What lives there |
