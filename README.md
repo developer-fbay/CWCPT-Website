@@ -43,7 +43,12 @@ DigitalOcean App Platform, from this repo's `main` (decided with Codi, 2026-11-2
 | Run command | `npm start` |
 | HTTP port | `8080` (App Platform passes it as `PORT`, which the server reads) |
 | Node | 22 or newer, from `engines` in `package.json` (builds tested on Node 24) |
-| Env, run time (encrypted) | `NUXT_N8N_CONTACT_WEBHOOK`, `NUXT_N8N_WEBHOOK_SECRET` (and the Supabase ones if used) |
+| Env, run time (encrypted) | `NUXT_N8N_CONTACT_WEBHOOK`: the **Production URL** (`/webhook/`, not `/webhook-test/`) of the n8n workflow "CWCPT Website Contact Form"; `NUXT_N8N_WEBHOOK_SECRET`: the value of that workflow's `x-cwcpt-secret` Header Auth credential (and the Supabase ones if used) |
+
+The form posts to `/api/contact`, which sends n8n a JSON body (`tab`, `tabLabel`, `name`, `company`, `email`, `phone`,
+`country`, `looking`, `people`, `start`, `slot`, `message`, `ref`, `consent`, `page`, `receivedAt`) with the header
+`x-cwcpt-secret`. If n8n refuses or doesn't answer within 10 seconds, the visitor sees "The form could not be sent"
+and the reason goes to the runtime log (403: the secrets differ; 404: the workflow isn't published).
 
 `NUXT_PUBLIC_SITE_URL` defaults to `https://coworkcapetown.com`. Leave it, even on the preview: canonicals and
 the sitemap must name the real address, never the `*.ondigitalocean.app` one. Pushing to `main` deploys, so run

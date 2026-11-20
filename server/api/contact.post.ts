@@ -1,5 +1,6 @@
-// Contact form: the browser posts here, and this forwards to n8n, which creates the lead in Close and an entry
-// in Gravity Forms (see _context/04). The webhook address and secret never reach the browser.
+// Contact form: the browser posts here, and this forwards to n8n (workflow "CWCPT Website Contact Form"), which
+// creates the lead in Close and posts to Slack. The webhook address and secret never reach the browser.
+// NUXT_N8N_CONTACT_WEBHOOK = the workflow's Production URL; NUXT_N8N_WEBHOOK_SECRET = its x-cwcpt-secret value.
 const FIELDS = ['tab', 'tabLabel', 'name', 'company', 'email', 'phone', 'country', 'looking', 'people', 'start', 'slot', 'message', 'ref'] as const
 
 export default defineEventHandler(async (event) => {
@@ -26,16 +27,25 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 422, statusMessage: 'Consent is required' })
   }
 
-  await $fetch(n8nContactWebhook, {
-    method: 'POST',
-    headers: n8nWebhookSecret ? { 'x-cwcpt-secret': n8nWebhookSecret } : {},
-    body: {
-      ...clean,
-      consent: true,
-      page: getHeader(event, 'referer') ?? '',
-      receivedAt: new Date().toISOString(),
-    },
-  })
+  try {
+    await $fetch(n8nContactWebhook, {
+      method: 'POST',
+      headers: n8nWebhookSecret ? { 'x-cwcpt-secret': n8nWebhookSecret } : {},
+      body: {
+        ...clean,
+        consent: true,
+        page: getHeader(event, 'referer') ?? '',
+        receivedAt: new Date().toISOString(),
+      },
+      timeout: 10_000,
+    })
+  } catch (error) {
+    // The details go to the server log (DigitalOcean runtime logs). The visitor gets a plain message, never the
+    // webhook address. 403 = the secret doesn't match n8n's; 404 = the workflow isn't published.
+    const { statusCode, message } = error as { statusCode?: number; message?: string }
+    console.error(`[contact] n8n webhook failed: ${statusCode ?? 'no response'} ${message ?? ''}`)
+    throw createError({ statusCode: 502, statusMessage: 'The form could not be sent' })
+  }
 
   return { ok: true }
 })
