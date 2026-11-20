@@ -47,7 +47,11 @@ function nameFor(item) {
 const widths = { photos: [1600, 800], stock: [1600, 800], hero: [1920, 960], brand: [1600], plans: [2560, 1280] }
 // Brand pieces with their own widths: full-width pieces keep 2560px; logos are shown small (header ~106px,
 // footer ~180px), so 600px is sharp on any screen and only a few KB.
-const brandWidths = { 'neon-divider': [2560], 'heading-underline-long': [2560], 'logo-transparent': [600], 'logo-black': [600] }
+const brandWidths = {
+  'neon-divider': [2560], 'heading-underline-long': [2560], 'logo-transparent': [600], 'logo-black': [600],
+  // Partner logos are shown about 120 to 210px wide: 600px is sharp on any screen
+  'partner-the-legends-agency': [600], 'partner-fbx-capital-partners': [600], 'partner-funding-bay': [600], 'partner-employer-of-record-sa': [600],
+}
 
 const index = []
 let made = 0
@@ -65,7 +69,9 @@ for (const item of manifest) {
     const suffix = groupWidths.length > 1 ? `-${w}` : ''
     const file = path.join(dir, `${name}${suffix}.webp`)
     if (force || !fs.existsSync(file)) {
-      await sharp(input).rotate().resize({ width, withoutEnlargement: true })
+      // Partner logos lose their empty margins, so LogoStrip can balance them by their real shape
+      const base = name.startsWith('partner-') ? sharp(await sharp(input).trim({ threshold: 10 }).toBuffer()) : sharp(input)
+      await base.rotate().resize({ width, withoutEnlargement: true })
         .webp({ quality: item.group === 'brand' ? 90 : 72, alphaQuality: 100, effort: 5 })
         .toFile(file)
       made++

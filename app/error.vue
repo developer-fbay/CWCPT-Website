@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { notFound } from '~/data/site'
+
 const props = defineProps<{ error: { statusCode?: number } }>()
 const code = computed(() => props.error?.statusCode || 404)
 useSeoMeta({ title: `${code.value} | Co Work Cape Town`, robots: 'noindex, follow' })
@@ -12,10 +14,10 @@ useSeoMeta({ title: `${code.value} | Co Work Cape Town`, robots: 'noindex, follo
         <div class="nf__text">
           <p class="label">Error {{ code }}</p>
           <h1 class="mono h1">{{ code === 404 ? 'Not here' : 'Something broke' }}<span class="dot">.</span></h1>
-          <p class="lead muted">[404 message from the approved copy.]</p>
+          <p v-if="filled(notFound.message)" class="lead muted">{{ notFound.message }}</p>
           <div class="row">
-            <Btn to="/">Back Home</Btn>
-            <Btn to="/pricing" variant="ghost">See Pricing</Btn>
+            <Btn to="/">Back home</Btn>
+            <Btn to="/pricing" variant="ghost">See pricing</Btn>
           </div>
         </div>
       </div>

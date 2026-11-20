@@ -40,10 +40,19 @@ function validate() {
   return Object.keys(errors).length === 0
 }
 
+// After a failed submit, move focus to the first field with a problem (its message is read out with it)
+function focusFirstError() {
+  const first = (['name', 'email', 'consent'] as const).find((k) => errors[k])
+  if (first) nextTick(() => document.getElementById(first === 'consent' ? 'f-consent' : `f-${first}`)?.focus())
+}
+
+// Blocks still waiting for copy ([bracketed] briefs in app/data) stay out until written (PLAN.md)
+const steps = nextSteps.steps.filter((s) => filled(s))
+
 const events: Record<TabId, string> = { tour: 'tour_booked', video: 'walkthrough_booked', quote: 'quote_requested', question: 'question_sent' }
 
 async function submit() {
-  if (!validate()) return
+  if (!validate()) return focusFirstError()
   state.value = 'sending'
   try {
     await $fetch('/api/contact', { method: 'POST', body: { ...form, tab: tab.value, tabLabel: current.value.label } })
@@ -63,8 +72,8 @@ async function submit() {
 
 <template>
   <div>
-    <PageHero :title="contactHero.title" :crumbs="crumbs" rating>
-      <p>{{ contactHero.intro }}</p>
+    <PageHero :title="contactHero.title" :crumbs="crumbs" :image="contactHero.image" rating compact-mobile>
+      <p v-if="filled(contactHero.intro)">{{ contactHero.intro }}</p>
     </PageHero>
 
     <section class="sec on-white" data-rv aria-label="Contact form">
@@ -79,9 +88,9 @@ async function submit() {
               <dt>Tours</dt><dd>7am to 7pm</dd>
             </dl>
           </div>
-          <div class="blk">
+          <div v-if="steps.length" class="blk">
             <h3 class="label">{{ nextSteps.heading }}</h3>
-            <ol class="next"><li v-for="s in nextSteps.steps" :key="s">{{ s }}</li></ol>
+            <ol class="next"><li v-for="s in steps" :key="s">{{ s }}</li></ol>
           </div>
           <div class="blk">
             <h3 class="label">Find us</h3>
@@ -101,7 +110,8 @@ async function submit() {
 
         <div class="formwrap r-body">
           <div v-if="state === 'sent'" class="sent" role="status">
-            <p class="mono h3">{{ thanks(form.name.split(' ')[0] ?? '') }}</p>
+            <p class="mono h3">{{ thanks.line(form.name.trim().split(' ')[0] ?? '') }}</p>
+            <p v-if="filled(thanks.text)" class="lead">{{ thanks.text }}</p>
             <div class="links">
               <TextLink to="/location">Directions and parking</TextLink>
               <TextLink to="/">Back to the homepage</TextLink>
@@ -125,8 +135,8 @@ async function submit() {
             <div class="two">
               <div class="field">
                 <label for="f-name">Name</label>
-                <input id="f-name" v-model="form.name" class="input" autocomplete="name" placeholder="Your name" :aria-invalid="!!errors.name" required>
-                <span v-if="errors.name" class="err">✕ {{ errors.name }}</span>
+                <input id="f-name" v-model="form.name" class="input" autocomplete="name" placeholder="Your name" :aria-invalid="!!errors.name" :aria-describedby="errors.name ? 'e-name' : undefined" required>
+                <span v-if="errors.name" id="e-name" class="err">✕ {{ errors.name }}</span>
               </div>
               <div class="field">
                 <label for="f-company">Company</label>
@@ -134,8 +144,8 @@ async function submit() {
               </div>
               <div class="field">
                 <label for="f-email">Email</label>
-                <input id="f-email" v-model="form.email" type="email" class="input" autocomplete="email" placeholder="you@company.com" :aria-invalid="!!errors.email" required>
-                <span v-if="errors.email" class="err">✕ {{ errors.email }}</span>
+                <input id="f-email" v-model="form.email" type="email" class="input" autocomplete="email" placeholder="you@company.com" :aria-invalid="!!errors.email" :aria-describedby="errors.email ? 'e-email' : undefined" required>
+                <span v-if="errors.email" id="e-email" class="err">✕ {{ errors.email }}</span>
               </div>
               <div class="field">
                 <label for="f-phone">Phone</label>
@@ -157,7 +167,7 @@ async function submit() {
               </div>
               <div class="field">
                 <label for="f-people">How many people?</label>
-                <input id="f-people" v-model="form.people" class="input" inputmode="numeric" placeholder="How many desks?">
+                <input id="f-people" v-model="form.people" class="input" inputmode="numeric" placeholder="For example: 5">
               </div>
               <div class="field">
                 <label for="f-start">When would you start?</label>
@@ -181,10 +191,10 @@ async function submit() {
             <input v-if="form.ref" type="hidden" name="ref" :value="form.ref">
 
             <label class="check">
-              <input v-model="form.consent" type="checkbox" :aria-invalid="!!errors.consent">
-              <span>{{ consent }}</span>
+              <input id="f-consent" v-model="form.consent" type="checkbox" :aria-invalid="!!errors.consent" :aria-describedby="errors.consent ? 'e-consent' : undefined">
+              <span>{{ consent.text }} <NuxtLink :to="consent.link.to" target="_blank">{{ consent.link.label }}</NuxtLink>.</span>
             </label>
-            <span v-if="errors.consent" class="err">✕ {{ errors.consent }}</span>
+            <span v-if="errors.consent" id="e-consent" class="err">✕ {{ errors.consent }}</span>
 
             <div class="row">
               <Btn type="submit" variant="black" :disabled="state === 'sending'" :cta="`contact_submit_${tab}`">
@@ -210,8 +220,14 @@ async function submit() {
 .links { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
 .form { display: flex; flex-direction: column; gap: 22px; }
 .two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.check a { font-weight: 700; text-underline-offset: 3px; }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .sent { display: flex; flex-direction: column; gap: 22px; padding: 32px 0; }
 @media (max-width: 960px) { .grid { grid-template-columns: 1fr; } .formwrap { order: -1; } }
-@media (max-width: 560px) { .two { grid-template-columns: 1fr; } }
+@media (max-width: 560px) {
+  .two { grid-template-columns: 1fr; }
+  /* The four tabs as a 2 by 2 grid, not a pill that wraps unevenly */
+  .tabs { display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--radius); }
+  .tabs .tabbtn { text-align: center; }
+}
 </style>

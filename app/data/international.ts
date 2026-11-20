@@ -4,18 +4,21 @@
 // Every page is written for Google, including these two (umbrella Notion task, 17 Nov).
 import { officeFaqs } from './offices'
 import { pricingFaqs } from './plans'
-import type { Faq } from './types'
+import { photo, type Faq } from './types'
 
 const ukOrUs = officeFaqs.find((f) => f.q.startsWith('Can a UK or US company'))!
 const rands = pricingFaqs.find((f) => f.q === 'Can I pay in rands?')!
 
 export const intlSeo = {
+  // Whole title (no " | Co Work Cape Town"): 54 characters instead of 73, so Google shows it in full
   title: 'Office space in Cape Town for your South African team',
-  description: 'Office space in Cape Town for UK, US and European companies with staff in South Africa: billed in GBP, USD, EUR or ZAR, with backup power and backup internet, at Wembley Square, Gardens.',
+  titleWhole: true,
+  description: 'Office space in Cape Town for UK, US and European companies with staff in South Africa: billed in GBP, USD, EUR or ZAR, with backup power and internet.',
 }
 
 export const intlHero = {
   title: 'Office space in Cape Town for your South African team',
+  image: photo('photos', 'fb-tla-ev-space-6596', 'A large team office at Co Work Cape Town, with rows of desks'),
   intro: "[Intro for a buyer in London, Amsterdam or New York: you've hired, or are hiring, people in Cape Town and they need a real office. How many overseas companies already house staff here: to confirm.]",
 }
 
@@ -66,6 +69,7 @@ export const ukSeo = {
 
 export const ukHero = {
   title: 'Cape Town office space for UK companies',
+  image: photo('photos', 'hot-desking-space-192005', 'People working in the open-plan coworking area at Co Work Cape Town'),
   intro: '[Intro in UK terms: your Cape Town hires, in an office invoiced in pounds, with the power and internet problems you have read about solved. How many UK firms already house staff here: to confirm.]',
 }
 

@@ -4,12 +4,18 @@ import { partners } from '~/data/partners'
 
 const crumbs = [{ label: 'Home', to: '/' }, { label: 'International Teams' }]
 usePageSeo({ ...intlSeo, path: '/international-teams', breadcrumbs: crumbs, faqs: intlFaqs })
+
+// Blocks still waiting for copy ([bracketed] briefs in app/data) and links to hidden pages stay out (PLAN.md)
+const isHidden = useHiddenPages()
+const handledItems = handled.items.filter((i) => filled(i.text))
+const stepsReady = howFromAbroad.steps.every((s) => filled(s.text))
+const guideCards = guides.filter((g) => !isHidden(g.to))
 </script>
 
 <template>
   <div>
-    <PageHero :title="intlHero.title" :crumbs="crumbs" rating>
-      <p>{{ intlHero.intro }}</p>
+    <PageHero :title="intlHero.title" :crumbs="crumbs" :image="intlHero.image" rating>
+      <p v-if="filled(intlHero.intro)">{{ intlHero.intro }}</p>
       <template #actions>
         <Btn to="/contact-us?for=video" cta="intl_hero_video">Book a video walkthrough</Btn>
         <Btn to="/international-teams/offshore-team-cost" variant="ghost" cta="intl_hero_cost">What a Cape Town team costs</Btn>
@@ -20,32 +26,32 @@ usePageSeo({ ...intlSeo, path: '/international-teams', breadcrumbs: crumbs, faqs
     <section class="sec" data-rv aria-labelledby="handled-h">
       <div class="wrap stack-lg">
         <SectionHeading id="handled-h" :lines="handled.heading" />
-        <IconGrid :items="handled.items" />
+        <IconGrid :items="handledItems" />
       </div>
     </section>
 
-    <section class="sec" data-rv aria-labelledby="how-h">
+    <section v-if="stepsReady" class="sec" data-rv aria-labelledby="how-h">
       <div class="wrap stack-lg">
         <SectionHeading id="how-h" :lines="howFromAbroad.heading" />
         <div class="on-white panel"><StepsList :steps="howFromAbroad.steps" /></div>
-        <p class="muted r-body">Full detail on <NuxtLink to="/pricing">Pricing</NuxtLink>. Seat-by-seat maths on <NuxtLink to="/international-teams/offshore-team-cost">what a Cape Town team costs</NuxtLink>.</p>
+        <p class="muted r-body">Full detail on <NuxtLink to="/pricing">Pricing</NuxtLink>.<template v-if="!isHidden('/international-teams/offshore-team-cost')"> Seat-by-seat maths on <NuxtLink to="/international-teams/offshore-team-cost">what a Cape Town team costs</NuxtLink>.</template></p>
       </div>
     </section>
 
-    <section class="sec on-white" data-rv aria-labelledby="guides-h">
+    <section v-if="guideCards.length" class="sec on-white" data-rv aria-labelledby="guides-h">
       <div class="wrap stack-lg">
         <SectionHeading id="guides-h" :lines="['Guides for', 'employers']" />
         <div class="guides">
-          <NuxtLink v-for="(g, i) in guides" :key="g.to" :to="g.to" class="card-b lift guide r-item" :style="{ '--i': i }">
+          <NuxtLink v-for="(g, i) in guideCards" :key="g.to" :to="g.to" class="card-b lift guide r-item" :style="{ '--i': i }">
             <h3 class="mono guide__t">{{ g.title }}</h3>
-            <p class="guide__p">{{ g.text }}</p>
+            <p v-if="filled(g.text)" class="guide__p">{{ g.text }}</p>
             <span class="tlink tlink-light">Read the guide <span class="arr" aria-hidden="true"><svg viewBox="0 0 16 12"><path d="M1 6h13M9 1l5 5-5 5" /></svg></span></span>
           </NuxtLink>
         </div>
       </div>
     </section>
 
-    <section class="sec" data-rv aria-labelledby="whycpt-h">
+    <section v-if="filled(whyCapeTown.text)" class="sec" data-rv aria-labelledby="whycpt-h">
       <div class="wrap split">
         <SectionHeading id="whycpt-h" :lines="whyCapeTown.heading" />
         <div class="stack">

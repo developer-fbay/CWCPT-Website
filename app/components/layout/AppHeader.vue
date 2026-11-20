@@ -5,12 +5,38 @@ import { mainNav, site } from '~/data/site'
  * White logo, white links whose underline draws in, one white button. On phones the menu is a full black
  * screen of heavy links: it wipes down from the header (420ms snap), the links rise 70ms apart, the button
  * comes last, and the current page carries the lit full stop. Closing is one 280ms wipe up.
+ * Keyboard: opening moves focus to the first link, Tab stays inside the open menu, Escape closes it and returns
+ * focus to the burger. The page behind is inert while the menu is open, so screen readers stay in the menu.
  */
 const open = ref(false)
 const route = useRoute()
+const burger = ref<HTMLButtonElement | null>(null)
+const menu = ref<HTMLElement | null>(null)
 watch(() => route.fullPath, () => { open.value = false })
-watch(open, (v) => { if (import.meta.client) document.documentElement.style.overflow = v ? 'hidden' : '' })
-const isCurrent = (to: string) => route.path === to.split('#')[0].split('?')[0]
+watch(open, (v) => {
+  if (!import.meta.client) return
+  document.documentElement.style.overflow = v ? 'hidden' : ''
+  for (const el of [document.getElementById('main'), document.querySelector('footer')]) if (el) el.inert = v
+  if (v) nextTick(() => menu.value?.querySelector<HTMLElement>('a')?.focus())
+})
+const isCurrent = (to: string) => route.path === to.split('#')[0]!.split('?')[0]
+
+function close() {
+  open.value = false
+  nextTick(() => burger.value?.focus())
+}
+function onKey(e: KeyboardEvent) {
+  if (!open.value) return
+  if (e.key === 'Escape') return close()
+  if (e.key !== 'Tab' || !menu.value || !burger.value) return
+  // Keep Tab inside the burger and the menu
+  const items = [burger.value, ...menu.value.querySelectorAll<HTMLElement>('a, button')]
+  const i = items.indexOf(document.activeElement as HTMLElement)
+  if (e.shiftKey && i <= 0) { e.preventDefault(); items[items.length - 1]!.focus() }
+  else if (!e.shiftKey && i === items.length - 1) { e.preventDefault(); items[0]!.focus() }
+}
+onMounted(() => document.addEventListener('keydown', onKey))
+onBeforeUnmount(() => document.removeEventListener('keydown', onKey))
 </script>
 
 <template>
@@ -23,15 +49,15 @@ const isCurrent = (to: string) => route.path === to.split('#')[0].split('?')[0]
       <nav class="nav nav-desk" aria-label="Main">
         <NuxtLink v-for="item in mainNav" :key="item.label" :to="item.to">{{ item.label }}</NuxtLink>
       </nav>
-      <Btn to="/contact-us?for=tour" class="hdr__btn" cta="header_book_tour">Book A Tour</Btn>
+      <Btn to="/contact-us?for=tour" class="hdr__btn" cta="header_book_tour">Book a tour</Btn>
 
-      <button class="burger" type="button" :aria-expanded="open" aria-controls="mobile-menu" :aria-label="open ? 'Close menu' : 'Open menu'" @click="open = !open">
+      <button ref="burger" class="burger" type="button" :aria-expanded="open" aria-controls="mobile-menu" :aria-label="open ? 'Close menu' : 'Open menu'" @click="open = !open">
         <span /><span />
       </button>
     </div>
 
     <Transition name="menu">
-      <div v-if="open" id="mobile-menu" class="menu">
+      <div v-if="open" id="mobile-menu" ref="menu" class="menu">
         <nav class="menu__nav" aria-label="Main">
           <span v-for="(item, i) in mainNav" :key="item.label" class="mask">
             <NuxtLink :to="item.to" class="mono menu__link" :style="{ '--i': i }">
@@ -40,7 +66,7 @@ const isCurrent = (to: string) => route.path === to.split('#')[0].split('?')[0]
           </span>
         </nav>
         <div class="menu__foot" :style="{ '--i': mainNav.length }">
-          <Btn to="/contact-us?for=tour" cta="menu_book_tour">Book A Tour</Btn>
+          <Btn to="/contact-us?for=tour" cta="menu_book_tour">Book a tour</Btn>
           <a :href="`mailto:${site.email}`" class="menu__mail">{{ site.email }}</a>
         </div>
       </div>

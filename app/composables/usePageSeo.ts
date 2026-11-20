@@ -1,3 +1,4 @@
+import ogCards from '~/data/og.json'
 import { site } from '~/data/site'
 import type { Faq } from '~/data/types'
 
@@ -23,11 +24,16 @@ export function usePageSeo(page: PageSeo) {
   const url = `${siteUrl}${page.path === '/' ? '' : page.path}`
   // No " | Co Work Cape Town" when the title already names the brand (no "About Co Work Cape Town | Co Work Cape Town")
   const fullTitle = page.titleWhole || page.path === '/' || page.title.includes(site.name) ? page.title : `${page.title} | ${site.name}`
-  // The default share image is made by `npm run images` (1200 x 630 JPEG)
-  const image = page.image ? `${siteUrl}${page.image}` : `${siteUrl}/images/og-default.jpg`
-  const defaultImage = page.image
-    ? {}
-    : { ogImageWidth: 1200, ogImageHeight: 630, ogImageType: 'image/jpeg' as const, ogImageAlt: `The ${site.name} logo over a view of Table Mountain` }
+  // Share image: the page's own card (app/data/og.json, made by `npm run og`), else an image the page passes
+  // (a blog post's photo), else the default card (`npm run images`). Cards are 1200 x 630 JPEGs.
+  const card = ogCards.find((c) => c.path === page.path)
+  const share = card
+    ? { src: `/images/og/${card.path === '/' ? 'home' : card.path.slice(1).replace(/\//g, '-')}.jpg`, alt: `${site.name}: ${card.headline}. ${card.alt}.`, card: true }
+    : page.image
+      ? { src: page.image, alt: page.title, card: false }
+      : { src: '/images/og-default.jpg', alt: `The ${site.name} logo over a view of Table Mountain`, card: true }
+  const image = `${siteUrl}${share.src}`
+  const defaultImage = share.card ? { ogImageWidth: 1200, ogImageHeight: 630, ogImageType: 'image/jpeg' as const } : {}
   // Blog posts and guides: og:type article and their dates, which also give the sitemap its <lastmod>
   const article = page.schema?.find((s) => s['@type'] === 'Article' || s['@type'] === 'BlogPosting') as
     { datePublished?: string; dateModified?: string } | undefined
@@ -35,15 +41,21 @@ export function usePageSeo(page: PageSeo) {
   useSeoMeta({
     title: fullTitle,
     description: page.description,
-    ogTitle: fullTitle,
+    // Link previews show the site name on their own (og:site_name), so the shared title leaves out the suffix
+    ogTitle: page.title,
     ogDescription: page.description,
     ogUrl: url || siteUrl,
     ogType: article ? 'article' : 'website',
     ogImage: image,
     ...defaultImage,
+    ogImageAlt: share.alt,
     ogLocale: 'en_GB',
     ogSiteName: site.name,
     twitterCard: 'summary_large_image',
+    twitterTitle: page.title,
+    twitterDescription: page.description,
+    twitterImage: image,
+    twitterImageAlt: share.alt,
     articlePublishedTime: article?.datePublished,
     articleModifiedTime: article?.dateModified,
     robots: page.noindex ? 'noindex, follow' : undefined,

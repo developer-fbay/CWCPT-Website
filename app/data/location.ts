@@ -48,10 +48,10 @@ export const around = {
     "The Company's Garden and the South African Jewish Museum: about 10 minutes.",
   ],
   photos: [
-    photo('photos', 'entrance-2-5563', 'The square entrance at Wembley Square'),
+    photo('photos', 'entrance-2-5563', 'The entrance area at Co Work Cape Town, with clocks and a world map on the wall'),
     photo('photos', 'eating-area-5533', 'The eating area at Co Work Cape Town'),
     photo('photos', 'pool-table-5552', 'The pool table at Co Work Cape Town'),
-    photo('stock', 'table-mountain-placeholder', 'Table Mountain [photo to replace: the view from the space]'),
+    // A fourth photo, the view of Table Mountain from the space, goes here once it is taken (PLAN.md)
   ],
 }
 
@@ -59,7 +59,7 @@ export const inside = {
   heading: ['Inside', 'the space'],
   intro: 'Here is a look around, with versatile spaces for teamwork and solo focus.',
   zones: [
-    { caption: 'Open plan coworking:', link: { label: 'desks', to: '/' }, img: photo('photos', 'hot-desking-space-192005', 'Open plan coworking desks at Co Work Cape Town') },
+    { caption: 'Open plan coworking:', link: { label: 'desks', to: '/pricing#dedicated-desks' }, img: photo('photos', 'hot-desking-space-192005', 'Open plan coworking desks at Co Work Cape Town') },
     { caption: 'Private offices:', link: { label: 'offices', to: '/offices' }, img: photo('photos', 'office-for-sale-6532', 'A private office at Co Work Cape Town') },
     { caption: 'Just Now meeting room:', link: { label: 'rooms', to: '/meeting-rooms' }, img: photo('photos', 'meeting-room-8846', 'A meeting room at Co Work Cape Town') },
     { caption: 'The open-plan area, the only one in the space, with 46 coworking desks', img: photo('photos', 'seating-area-5522', 'The open-plan area at Co Work Cape Town') },

@@ -1,15 +1,22 @@
 <script setup lang="ts">
+import { Comment } from 'vue'
+
 /**
  * Top of every inner page, in the logo's layout: a photo square crossed by the white mountain line on the left,
  * breadcrumbs, the heavy H1 ending in a lit full stop, lead text, buttons and the Google rating on the right.
- * Slots: default (lead), `actions`, `after` (anything under the buttons).
+ * Slots: default (lead), `actions`, `after` (anything under the buttons). `compactMobile` drops the photo square
+ * on phones and tablets, so a page whose job is below the hero (Contact) gets there sooner.
  */
+const slots = useSlots()
+// A lead slot whose only child is switched off (v-if) renders nothing, so it leaves no gap
+const hasLead = computed(() => !!slots.default?.().some((v) => v.type !== Comment))
 withDefaults(
   defineProps<{
     title: string
     crumbs: { label: string; to?: string }[]
     image?: { src: string; alt: string; srcset?: string }
     rating?: boolean
+    compactMobile?: boolean
   }>(),
   {
     image: () => ({
@@ -22,7 +29,7 @@ withDefaults(
 </script>
 
 <template>
-  <section class="ph" data-rv>
+  <section class="ph" :class="{ 'ph--compact': compactMobile }" data-rv>
     <div class="wrap ph__grid">
       <div class="ph__sq r-media">
         <img :src="image.src" :srcset="image.srcset" sizes="(max-width: 960px) 90vw, 400px" :alt="image.alt" width="400" height="400" fetchpriority="high">
@@ -37,7 +44,7 @@ withDefaults(
           </template>
         </nav>
         <h1 class="mono h1"><span class="mask"><span>{{ title }}<span class="dot">.</span></span></span></h1>
-        <div v-if="$slots.default" class="lead muted ph__lead r-body"><slot /></div>
+        <div v-if="hasLead" class="lead muted ph__lead r-body"><slot /></div>
         <div v-if="$slots.actions" class="row r-btns"><slot name="actions" /></div>
         <Rating v-if="rating" class="r-btns" :link="{ label: 'read them', to: '/about#reviews' }" />
         <slot name="after" />
@@ -58,5 +65,6 @@ withDefaults(
 @media (max-width: 960px) {
   .ph__grid { grid-template-columns: 1fr; }
   .ph__sq { max-width: 420px; }
+  .ph--compact .ph__sq { display: none; }
 }
 </style>

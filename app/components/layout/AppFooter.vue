@@ -2,6 +2,9 @@
 import { footerColumns, site } from '~/data/site'
 
 const year = new Date().getFullYear()
+// Links to hidden pages (useHiddenPages) stay out until those pages are published
+const isHidden = useHiddenPages()
+const columns = footerColumns.map((c) => ({ ...c, links: c.links.filter((l) => !isHidden(l.to)) }))
 </script>
 
 <template>
@@ -16,14 +19,14 @@ const year = new Date().getFullYear()
           <a :href="`mailto:${site.email}`" class="foot__mail">{{ site.email }}</a>
           <a :href="site.phoneHref">{{ site.phone }}</a>
         </div>
-        <nav v-for="col in footerColumns" :key="col.title" :aria-label="col.title" class="foot__col">
+        <nav v-for="col in columns" :key="col.title" :aria-label="col.title" class="foot__col">
           <p class="label">{{ col.title }}</p>
           <NuxtLink v-for="link in col.links" :key="link.label" :to="link.to">{{ link.label }}</NuxtLink>
         </nav>
       </div>
       <div class="foot__bottom">
         <span>© {{ year }} Co Work Cape Town</span>
-        <span class="foot__legal"><NuxtLink to="/blog">Blog</NuxtLink><NuxtLink to="/privacy-policy">Privacy policy</NuxtLink></span>
+        <span class="foot__legal"><NuxtLink to="/privacy-policy">Privacy policy</NuxtLink></span>
       </div>
     </div>
   </footer>

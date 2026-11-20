@@ -1,0 +1,14 @@
+[
+  { "path": "/", "headline": "Coworking space in Gardens, Cape Town", "photo": "/images/hero/home-hero-poster-1920.webp", "alt": "Lion's Head and Table Mountain at dusk" },
+  { "path": "/offices", "headline": "Private offices to rent in Gardens", "photo": "/images/photos/aweh-office-5519-1600.webp", "alt": "Aweh, a private office at Co Work Cape Town" },
+  { "path": "/pricing", "headline": "Coworking and office pricing", "photo": "/images/photos/hot-desking-space-192019-1600.webp", "alt": "A dedicated desk with two screens" },
+  { "path": "/meeting-rooms", "headline": "Meeting rooms and boardroom hire", "photo": "/images/photos/meeting-room-8846-1600.webp", "alt": "A meeting room at Co Work Cape Town" },
+  { "path": "/location", "headline": "At Wembley Square, Gardens", "photo": "/images/photos/entrance-5559-1600.webp", "alt": "The entrance to Co Work Cape Town" },
+  { "path": "/contact-us", "headline": "Book a tour, or get a quote", "photo": "/images/photos/entrance-2-5563-1600.webp", "alt": "The entrance area at Co Work Cape Town" },
+  { "path": "/about", "headline": "About Co Work Cape Town", "photo": "/images/photos/waiting-area-5550-1600.webp", "alt": "The lounge at Co Work Cape Town" },
+  { "path": "/faq", "headline": "Questions, answered", "photo": "/images/photos/kitchen-5567-1600.webp", "alt": "The kitchen and coffee station, lit by a pink neon strip" },
+  { "path": "/international-teams", "headline": "Office space for your South African team", "photo": "/images/photos/fb-tla-ev-space-6596-1600.webp", "alt": "A large team office at Co Work Cape Town" },
+  { "path": "/international-teams/uk", "headline": "Cape Town office space for UK companies", "photo": "/images/photos/hot-desking-space-192005-1600.webp", "alt": "People working in the open-plan coworking area" },
+  { "path": "/privacy-policy", "headline": "Privacy and cookie policy", "photo": "/images/hero/home-hero-poster-1920.webp", "alt": "Lion's Head and Table Mountain at dusk" },
+  { "path": "/blog", "headline": "The Co Work Cape Town blog", "photo": "/images/photos/seating-area-5526-1600.webp", "alt": "Two purple armchairs in a breakout corner" }
+]

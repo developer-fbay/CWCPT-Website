@@ -5,15 +5,16 @@ import { homeFaqs } from './home'
 import { roomFaqs } from './meetingRooms'
 import { officeFaqs } from './offices'
 import { pricingFaqs } from './plans'
-import type { Faq } from './types'
+import { photo, type Faq } from './types'
 
 export const faqSeo = {
   title: 'Questions about working at Co Work Cape Town',
-  description: 'Prices and terms, dedicated desks, private offices, meeting rooms, backup power, parking and international teams: answers before you visit Co Work Cape Town in Gardens.',
+  description: 'Prices and terms, desks, offices, meeting rooms, backup power, parking and international teams: answers before you visit Co Work Cape Town in Gardens.',
 }
 
 export const faqHero = {
   title: 'Questions about working at Co Work Cape Town', // the wireframe's working H1
+  image: photo('photos', 'kitchen-5567', 'The kitchen and coffee station at Co Work Cape Town, lit by a pink neon strip'),
   intro: '[Intro line from the FAQ copy.]',
 }
 
@@ -32,3 +33,9 @@ export const faqCategories: { id: string; title: string; items: Faq[] }[] = [
   { id: 'location', title: 'Location and parking', items: [pick(homeFaqs, 'What hours can I access the space?'), pick(homeFaqs, 'Is there parking and security at Wembley Square?'), pick(officeFaqs, 'Is parking included?'), pick(roomFaqs, 'Is there parking for visitors?')] },
   { id: 'international', title: 'International companies', items: [pick(officeFaqs, 'Can a UK or US company rent an office for its South African staff?')] },
 ]
+
+// The three help blocks under the questions. A [bracketed] line is a brief: it shows once written (PLAN.md).
+export const faqHelp = {
+  ask: '[Line from the FAQ copy.]',
+  see: '[Line from the FAQ copy.]',
+}

@@ -43,7 +43,7 @@ const officePhotos = [
       </div>
       <div class="wrap why-a__head">
         <SectionHeading label="Why members stay" :lines="['More than just desks']">
-          <p class="lead muted r-body why-a__lead">{{ whyLead }}</p>
+          <p v-if="filled(whyLead)" class="lead muted r-body why-a__lead">{{ whyLead }}</p>
         </SectionHeading>
       </div>
       <ReasonsBand v-if="whyLayout === 'A'" :items="features" class="why-a__band r-body" />
@@ -55,7 +55,7 @@ const officePhotos = [
       <div class="wrap why__grid">
         <div class="why__lead">
           <SectionHeading label="Why members stay" :lines="['More than', 'just desks']">
-            <p class="lead muted r-body">{{ whyLead }}</p>
+            <p v-if="filled(whyLead)" class="lead muted r-body">{{ whyLead }}</p>
           </SectionHeading>
           <Facts :items="homeFacts" variant="big" />
         </div>
@@ -102,7 +102,7 @@ const officePhotos = [
             >{{ o.name }} <small>{{ o.status === 'let' ? 'let' : o.chip }}</small></NuxtLink>
           </div>
           <div class="row r-btns">
-            <Btn to="/offices" variant="black" cta="home_offices">See The Offices</Btn>
+            <Btn to="/offices" variant="black" cta="home_offices">See the offices</Btn>
             <TextLink to="/contact-us?for=office" cta="home_offices_quote">Get a quote</TextLink>
           </div>
         </div>
@@ -120,9 +120,9 @@ const officePhotos = [
         <div class="stack">
           <SectionHeading id="loc-h" label="Location" :lines="['Find us at', 'Wembley Square']" />
           <p class="lead r-body"><b>{{ locationTeaser.address }}</b></p>
-          <p class="lead muted r-body">{{ locationTeaser.text }}</p>
+          <p v-if="filled(locationTeaser.text)" class="lead muted r-body">{{ locationTeaser.text }}</p>
           <div class="row r-btns">
-            <Btn to="/contact-us?for=tour" cta="home_location_tour">Book A Tour</Btn>
+            <Btn to="/contact-us?for=tour" cta="home_location_tour">Book a tour</Btn>
             <TextLink to="/location" light cta="home_directions">Directions and parking</TextLink>
           </div>
         </div>

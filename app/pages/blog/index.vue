@@ -1,14 +1,11 @@
 <script setup lang="ts">
+import { blogEmpty, blogHero, blogSeo as seo } from '~/data/blog'
 import type { BlogCard } from '~/data/types'
 
 // The blog index (wireframe BlogArchive): the newest post featured, category chips that filter without leaving
 // the page, a grid, and Load more. Posts are markdown files in content/blog (see its README).
 const crumbs = [{ label: 'Home', to: '/' }, { label: 'Blog' }]
 const { siteUrl } = useRuntimeConfig().public
-const seo = {
-  title: 'The Co Work Cape Town blog',
-  description: 'Working from Cape Town, running a team here and life at Wembley Square, Gardens: the Co Work Cape Town blog.',
-}
 usePageSeo({ ...seo, path: '/blog', breadcrumbs: crumbs, schema: [{ '@context': 'https://schema.org', '@type': 'Blog', name: seo.title, url: `${siteUrl}/blog` }] })
 
 const { data: posts } = await useFetch<BlogCard[]>('/api/blog', { key: 'blog-all', default: () => [] })
@@ -23,8 +20,8 @@ const date = (d: string) => new Date(d).toLocaleDateString('en-GB', { day: 'nume
 
 <template>
   <div>
-    <PageHero title="The Co Work Cape Town blog" :crumbs="crumbs">
-      <p>[SEO copy, about 40 words: what the blog covers, such as working from Cape Town, running a team here and life at Wembley Square.]</p>
+    <PageHero :title="blogHero.title" :crumbs="crumbs" :image="blogHero.image">
+      <p v-if="filled(blogHero.intro)">{{ blogHero.intro }}</p>
     </PageHero>
 
     <section v-if="featured" class="sec feat-sec" data-rv aria-label="Newest post">
@@ -53,7 +50,7 @@ const date = (d: string) => new Date(d).toLocaleDateString('en-GB', { day: 'nume
         <div v-if="filtered.length" class="grid">
           <PostCard v-for="p in filtered.slice(0, shown)" :key="p.slug" :post="p" />
         </div>
-        <p v-else class="lead">[The first posts are on their way.]</p>
+        <p v-else class="lead">{{ blogEmpty }}</p>
         <div v-if="filtered.length > shown" class="more"><Btn variant="ghost-dark" @click="shown += 6">Load more posts</Btn></div>
       </div>
     </section>

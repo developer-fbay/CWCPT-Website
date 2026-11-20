@@ -1,12 +1,15 @@
+import { photo, type Img } from './types'
+
 // About: structure from the wireframe (About.dc.html). No approved About copy yet: [bracketed] text is the
 // wireframe's placeholder. "The facts" block quotes only approved facts.
 export const aboutSeo = {
   title: 'About Co Work Cape Town',
-  description: 'Co Work Cape Town is a coworking space with dedicated desks, nine private offices and six meeting rooms at Wembley Square, Gardens, Cape Town. The facts, the people and the reviews.',
+  description: 'Co Work Cape Town is a coworking space at Wembley Square, Gardens: dedicated desks, nine private offices and six meeting rooms. The facts and the reviews.',
 }
 
 export const aboutHero = {
   title: 'About Co Work Cape Town',
+  image: photo('photos', 'waiting-area-5550', 'The lounge at Co Work Cape Town, with black chairs, plants and big windows'),
   intro: '[One paragraph that an AI assistant could lift whole: what Co Work Cape Town is, where, what it offers and who it suits, in the approved figures.]',
 }
 
@@ -32,7 +35,8 @@ export const whyItExists = {
   ],
 }
 
-export const people = [
+// A person shows once their name is filled in; add `photo: photo('photos', '<file>', '<alt>')` for their picture
+export const people: { name: string; role: string; photo?: Img }[] = [
   { name: '[Name]', role: 'Community manager' },
   { name: '[Name]', role: 'Operations' },
   { name: '[Name]', role: 'Founder' },

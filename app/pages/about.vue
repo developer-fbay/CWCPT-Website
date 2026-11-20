@@ -5,15 +5,19 @@ import { reviews } from '~/data/reviews'
 
 const crumbs = [{ label: 'Home', to: '/' }, { label: 'About' }]
 usePageSeo({ ...aboutSeo, path: '/about', breadcrumbs: crumbs })
+
+// Blocks still waiting for copy ([bracketed] briefs in app/data) stay out until written (PLAN.md)
+const why = whyItExists.paragraphs.filter((p) => filled(p))
+const team = people.filter((p) => filled(p.name))
 </script>
 
 <template>
   <div>
-    <PageHero :title="aboutHero.title" :crumbs="crumbs" rating>
-      <p>{{ aboutHero.intro }}</p>
+    <PageHero :title="aboutHero.title" :crumbs="crumbs" :image="aboutHero.image" rating>
+      <p v-if="filled(aboutHero.intro)">{{ aboutHero.intro }}</p>
       <template #actions>
-        <Btn to="/contact-us?for=tour" cta="about_hero_tour">Book A Tour</Btn>
-        <Btn to="/pricing" variant="ghost" cta="about_hero_pricing">See Pricing</Btn>
+        <Btn to="/contact-us?for=tour" cta="about_hero_tour">Book a tour</Btn>
+        <Btn to="/pricing" variant="ghost" cta="about_hero_pricing">See pricing</Btn>
       </template>
     </PageHero>
 
@@ -22,7 +26,7 @@ usePageSeo({ ...aboutSeo, path: '/about', breadcrumbs: crumbs })
       <div class="wrap stack-lg">
         <div class="sec-top">
           <SectionHeading id="facts-h" :lines="['The', 'facts']" />
-          <p class="cap r-body">{{ factsChecked }}</p>
+          <p v-if="filled(factsChecked)" class="cap r-body">{{ factsChecked }}</p>
         </div>
         <dl class="facts-grid">
           <div v-for="(f, i) in aboutFacts" :key="f.label" class="fg r-item" :style="{ '--i': i % 5 }">
@@ -33,19 +37,19 @@ usePageSeo({ ...aboutSeo, path: '/about', breadcrumbs: crumbs })
       </div>
     </section>
 
-    <section class="sec" data-rv aria-labelledby="why-h">
+    <section v-if="why.length" class="sec" data-rv aria-labelledby="why-h">
       <div class="wrap split">
         <SectionHeading id="why-h" :lines="whyItExists.heading" />
-        <div class="prose muted r-body"><p v-for="p in whyItExists.paragraphs" :key="p">{{ p }}</p></div>
+        <div class="prose muted r-body"><p v-for="p in why" :key="p">{{ p }}</p></div>
       </div>
     </section>
 
-    <section class="sec" data-rv aria-labelledby="people-h">
+    <section v-if="team.length" class="sec" data-rv aria-labelledby="people-h">
       <div class="wrap stack-lg">
         <SectionHeading id="people-h" :lines="['The', 'people']" />
         <ul class="people">
-          <li v-for="(p, i) in people" :key="p.role" class="person r-item" :style="{ '--i': i }">
-            <div class="person__img" aria-hidden="true">[Photo]</div>
+          <li v-for="(p, i) in team" :key="p.role" class="person r-item" :style="{ '--i': i }">
+            <img v-if="p.photo" class="person__img" :src="p.photo.src" :alt="p.photo.alt" width="400" height="400" loading="lazy" decoding="async">
             <p class="person__n">{{ p.name }}</p>
             <p class="muted">{{ p.role }}</p>
           </li>
@@ -63,7 +67,7 @@ usePageSeo({ ...aboutSeo, path: '/about', breadcrumbs: crumbs })
       <ReviewsMarquee :reviews="reviews" class="rev-marq" />
     </section>
 
-    <section class="sec" data-rv aria-labelledby="group-h">
+    <section v-if="filled(group.text)" class="sec" data-rv aria-labelledby="group-h">
       <div class="wrap split">
         <div class="stack">
           <SectionHeading id="group-h" :lines="group.heading" />
@@ -73,7 +77,7 @@ usePageSeo({ ...aboutSeo, path: '/about', breadcrumbs: crumbs })
       </div>
     </section>
 
-    <section class="sec" data-rv aria-labelledby="mentions-h">
+    <section v-if="filled(mentions)" class="sec" data-rv aria-labelledby="mentions-h">
       <div class="wrap split">
         <SectionHeading id="mentions-h" :lines="['Mentions']" />
         <p class="lead muted r-body">{{ mentions }}</p>
@@ -94,7 +98,7 @@ usePageSeo({ ...aboutSeo, path: '/about', breadcrumbs: crumbs })
 .fg__v { margin: 0; font-size: 18px; font-weight: 800; line-height: 1.35; }
 .people { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: 24px; }
 .person { display: flex; flex-direction: column; gap: 8px; }
-.person__img { aspect-ratio: 1 / 1; border-radius: var(--radius); background: #111111; border: 1px dashed #333333; display: flex; align-items: center; justify-content: center; color: var(--grey); font-size: 13px; }
+.person__img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--radius); background: #111111; }
 .person__n { font-weight: 800; font-size: 18px; }
 .reviews { overflow: hidden; }
 .rev-meta { justify-content: flex-end; }

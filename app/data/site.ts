@@ -3,7 +3,7 @@
 export const site = {
   name: 'Co Work Cape Town',
   email: 'info@coworkcapetown.com',
-  phone: '+2779 803 3902', // as written in the approved Location copy (format to confirm with Codi)
+  phone: '+27 79 803 3902', // the approved Location copy writes +2779 803 3902; spaced as the international format (QA, 2026-11-20)
   phoneHref: 'tel:+27798033902',
   address: {
     line: 'Co Work Cape Town, Wembley Square, Solan Rd, Cape Town, 8001, South Africa',
@@ -27,6 +27,11 @@ export const site = {
   // The member booking system (noindex); its address is to confirm with Codi.
   bookingSystem: '[booking system address]',
 }
+
+// Pages built ahead of their content: hidden (404, unlinked, not in the sitemap) until the content is written.
+// PLAN.md "Hidden until built" lists what each one needs. Take a path out of this list to publish it.
+// The blog hides itself until the first post exists (no need to list it here).
+export const hiddenPages: string[] = ['/international-teams/offshore-team-cost', '/office-cost-cape-town']
 
 // Until there is a Coworking page, "Coworking" opens the Pricing page at its hero ("Coworking and office pricing
 // in Gardens, Cape Town") and "Pricing" goes straight to the plan cards (Jesse, 2026-11-19).
@@ -76,12 +81,15 @@ export const footerColumns = [
   },
 ]
 
+// The 404 page. The message shows once it is written.
+export const notFound = { message: '[404 message from the approved copy.]' }
+
 // The closing band at the bottom of most pages (design canvas, HomeBW).
 export const closingBand = {
   label: site.hours.tours,
   lines: ['Book', 'your desk'],
   actions: [
-    { label: 'Book A Tour', to: '/contact-us?for=tour', cta: 'band_book_tour' },
-    { label: 'Enquire Now', to: '/contact-us', cta: 'band_enquire', variant: 'ghost' as const },
+    { label: 'Book a tour', to: '/contact-us?for=tour', cta: 'band_book_tour' },
+    { label: 'Enquire now', to: '/contact-us', cta: 'band_enquire', variant: 'ghost' as const },
   ],
 }

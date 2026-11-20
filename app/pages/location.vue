@@ -104,7 +104,7 @@ usePageSeo({ ...locationSeo, titleWhole: true, path: '/location', breadcrumbs: c
 .quote { display: flex; flex-direction: column; gap: 8px; }
 .quote blockquote { font-size: 19px; line-height: 1.55; font-weight: 500; }
 .nearby { padding-left: 18px; display: flex; flex-direction: column; gap: 6px; font-size: 16px; }
-.photos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.photos { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 12px; }
 .photos .zoom { aspect-ratio: 4 / 3; border-radius: var(--radius); }
 .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 24px 16px; }
 .zone { display: flex; flex-direction: column; gap: 12px; }
@@ -116,6 +116,7 @@ usePageSeo({ ...locationSeo, titleWhole: true, path: '/location', breadcrumbs: c
 .contact dt { font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; padding-top: 17px; }
 @media (max-width: 960px) {
   .split { grid-template-columns: 1fr; }
-  .photos { grid-template-columns: repeat(2, 1fr); }
+  .photos { grid-auto-flow: row; grid-template-columns: repeat(2, 1fr); }
+  .photos .zoom:last-child:nth-child(odd) { grid-column: span 2; aspect-ratio: 8 / 3; }
 }
 </style>

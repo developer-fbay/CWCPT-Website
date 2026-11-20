@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { faqCategories, faqHero, faqSeo } from '~/data/faq'
+import { faqCategories, faqHelp, faqHero, faqSeo } from '~/data/faq'
 
 const crumbs = [{ label: 'Home', to: '/' }, { label: 'FAQ' }]
 usePageSeo({ ...faqSeo, path: '/faq', breadcrumbs: crumbs, faqs: faqCategories.flatMap((c) => c.items) })
@@ -7,8 +7,8 @@ usePageSeo({ ...faqSeo, path: '/faq', breadcrumbs: crumbs, faqs: faqCategories.f
 
 <template>
   <div>
-    <PageHero :title="faqHero.title" :crumbs="crumbs">
-      <p>{{ faqHero.intro }}</p>
+    <PageHero :title="faqHero.title" :crumbs="crumbs" :image="faqHero.image">
+      <p v-if="filled(faqHero.intro)">{{ faqHero.intro }}</p>
       <template #after>
         <nav aria-label="Question categories" class="chips r-btns">
           <a v-for="c in faqCategories" :key="c.id" :href="`#${c.id}`" class="chip">{{ c.title }}</a>
@@ -29,12 +29,12 @@ usePageSeo({ ...faqSeo, path: '/faq', breadcrumbs: crumbs, faqs: faqCategories.f
       <div class="wrap help">
         <div class="help__item">
           <h2 class="mono h3">Still have a question<span class="dot">?</span></h2>
-          <p class="muted">[Line from the FAQ copy.]</p>
+          <p v-if="filled(faqHelp.ask)" class="muted">{{ faqHelp.ask }}</p>
           <Btn to="/contact-us?for=question" cta="faq_ask">Ask a question</Btn>
         </div>
         <div class="help__item">
           <h2 class="mono h3">Rather just see it<span class="dot">?</span></h2>
-          <p class="muted">[Line from the FAQ copy.]</p>
+          <p v-if="filled(faqHelp.see)" class="muted">{{ faqHelp.see }}</p>
           <Btn to="/contact-us?for=tour" variant="ghost" cta="faq_tour">Book a tour</Btn>
         </div>
         <div class="help__item">

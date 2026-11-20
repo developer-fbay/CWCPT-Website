@@ -139,6 +139,10 @@
   animation: qm-on var(--dur-ignite) linear both;
 }
 .is-open .faq-q .qm-core { opacity: 1; -webkit-text-stroke: 1.5px #ff3d92; paint-order: normal; text-shadow: none; filter: drop-shadow(0 0 0.8px #ffffff); }
+/* On white the open "?" stays plain black, like the lit full stop (.on-white .dot): glow lives on black, and the
+   white core would vanish into the white background (QA, 2026-11-20). The cross icon still marks the open one. */
+.on-white .is-open .faq-q .qm { color: inherit; -webkit-text-stroke: 0; text-shadow: none; animation: none; }
+.on-white .is-open .faq-q .qm-core { opacity: 0; }
 @keyframes qm-on { 0% { opacity: calc(var(--qm-a) * 0.25) } 8% { opacity: calc(var(--qm-a) * 1) } 12% { opacity: calc(var(--qm-a) * 0.3) } 24% { opacity: calc(var(--qm-a) * 0.45) } 30% { opacity: calc(var(--qm-a) * 0.95) } 38% { opacity: calc(var(--qm-a) * 0.5) } 52% { opacity: calc(var(--qm-a) * 1) } 60% { opacity: calc(var(--qm-a) * 0.8) } 100% { opacity: calc(var(--qm-a) * 1) } }
 .faq-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows var(--dur-panel) var(--ease-snap); }
 .faq-a > div { overflow: hidden; }

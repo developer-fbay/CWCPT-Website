@@ -32,7 +32,7 @@ export const rooms = [
   { name: 'Ja Now', anchor: 'ja-now', line: 'Ask us whether it suits your interview or call.' },
   { name: 'Now Now', anchor: 'now-now', line: 'Ask us whether it suits your interview or call.' },
   { name: 'Ja Nee', anchor: 'ja-nee', line: 'Ask us whether it suits your one-to-one or private call.' },
-].map((r, i) => ({ ...r, image: photo('photos', roomPhotos[i % roomPhotos.length]!, `${r.name}, a meeting room at Co Work Cape Town [photo to confirm]`) }))
+].map((r, i) => ({ ...r, image: photo('photos', roomPhotos[i % roomPhotos.length]!, 'A meeting room at Co Work Cape Town') })) // stand-in photos until each room's own is confirmed (PLAN.md), so the alt does not name the room
 
 export const booths = {
   text: 'Plus open, café-style booths in the shared area. They have power outlets and high-speed internet, and they are first come, first served with no booking.',

@@ -15,7 +15,6 @@ import { hero } from '~/data/home'
     <div class="wrap hh__grid">
       <div class="hh__text">
         <h1 class="badge r-label">
-          <span class="rule" aria-hidden="true" />
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 21s-7-6.5-7-11.5a7 7 0 0 1 14 0C19 14.5 12 21 12 21z" /><circle cx="12" cy="9.5" r="2.5" />
           </svg>
@@ -57,14 +56,8 @@ import { hero } from '~/data/home'
 .hh__grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
 .hh__text { display: flex; flex-direction: column; gap: clamp(14px, 2.4vh, 24px); min-width: 0; }
 
-/* The H1: the keyword line, set like the location line under a drawn rule */
+/* The H1: the keyword line, set small like the location line (no dash before it: Jesse, 2026-11-20) */
 .badge { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 12px 14px; font-size: 13px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; line-height: 1.4; }
-.badge .rule { display: block; width: 44px; height: 2px; background: var(--white); transform-origin: left; }
-/* No :global() here: in scoped CSS, ":global(.a) .b" compiles to just ".a" and drops the rest, which once put
-   scaleX(0) on <html> and blanked the whole page. Scoping only marks the last part (.rule), so this is enough. */
-.rv-ready [data-rv]:not([data-in]) .badge .rule { transform: scaleX(0); }
-[data-in] .badge .rule { animation: drawx 600ms var(--ease-snap) 120ms both; }
-@keyframes drawx { from { transform: scaleX(0) } to { transform: scaleX(1) } }
 
 /* The name, cut out of the black so the view shows through */
 .hh__name { font-size: var(--fs-display); }

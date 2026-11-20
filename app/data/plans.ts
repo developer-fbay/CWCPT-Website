@@ -1,15 +1,15 @@
 // Pricing: the approved copy, draft v4 (Google Doc 1psOYHgNE076KA2LJsZFf1u_OWizh5iOtTPaQq8TOKOM, approved
-// 13 Nov 2026), word for word. All prices exclude VAT. USD has no approved figures: the display switch shows
-// [confirm rate] until Codi gives a dated GBP to USD rate.
-import type { Faq } from './types'
+// 13 Nov 2026), word for word. All prices exclude VAT. The display switch shows GBP and ZAR only (Jesse, 2026-11-20).
+// The office card's line under the price carries the rand beside the pounds, like the desk card (QA, 2026-11-20).
+import { photo, type Faq } from './types'
 
 export interface Plan {
   id: string
   name: string
   tag: string
-  prices: { GBP: string; ZAR: string; USD: string }
+  prices: { GBP: string; ZAR: string }
   /** The line under the price, per currency shown */
-  notes: { GBP: string; ZAR: string; USD: string }
+  notes: { GBP: string; ZAR: string }
   /** Short points for the Home cards (from the approved facts) */
   list: string[]
   /** The approved Pricing copy, for the Pricing page */
@@ -26,6 +26,7 @@ export const pricingSeo = {
 }
 
 export const pricingHero = {
+  image: photo('photos', 'hot-desking-space-192019', 'A dedicated desk with two screens at Co Work Cape Town'),
   title: 'Coworking and office pricing in Gardens, Cape Town',
   paragraphs: [
     'Coworking Cape Town prices at Co Work Cape Town start at £174.12 a month for a dedicated desk with a screen. Private offices and meeting rooms are priced below, and all prices exclude VAT.',
@@ -40,21 +41,21 @@ export const plans: Plan[] = [
     id: 'dedicated-desks',
     name: 'Dedicated desk',
     tag: 'Never shared',
-    prices: { GBP: '£174.12', ZAR: 'R3,870.00', USD: '[confirm rate]' },
-    notes: { GBP: '(R3,870.00) a month, excl. VAT', ZAR: 'a month, excl. VAT', USD: 'a month, excl. VAT' },
+    prices: { GBP: '£174.12', ZAR: 'R3,870.00' },
+    notes: { GBP: '(R3,870.00) a month, excl. VAT', ZAR: 'a month, excl. VAT' },
     list: ['Never shared', 'Screen included', 'Meeting room credits each month'],
     text: [
       '£174.12 a month (R3,870.00), excluding VAT.',
       'Your own dedicated desk in the coworking area, with a screen. Desks are never shared. You also get high-speed internet, backup power, 24/7/365 security, all the coffee you can drink, and access to the shared spaces. Meeting room credits are included each month.',
     ],
-    action: { label: 'Book A Tour', to: '/contact-us?for=desk', cta: 'plans_desk_tour' },
+    action: { label: 'Book a tour', to: '/contact-us?for=desk', cta: 'plans_desk_tour' },
   },
   {
     id: 'private-offices',
     name: 'Private office',
     tag: 'Move in 48 hours',
-    prices: { GBP: '£1,444.75', ZAR: 'R23,220.00', USD: '[confirm rate]' },
-    notes: { GBP: 'to £7,313.22 a month, excl. VAT', ZAR: 'to R162,540.00 a month, excl. VAT', USD: 'a month, excl. VAT' },
+    prices: { GBP: '£1,444.75', ZAR: 'R23,220.00' },
+    notes: { GBP: '(R23,220.00) to £7,313.22 (R162,540.00) a month, excl. VAT', ZAR: 'to R162,540.00 a month, excl. VAT' },
     list: ['6 to 42 desks', 'Move in 48 hours if the office is free', 'Pay as you grow'],
     // The approved copy goes on with "For serviced office cost in Cape Town, here is the monthly price of each
     // office." and a price for each of the nine. That list made this card twice as long as the others, so it
@@ -64,7 +65,7 @@ export const plans: Plan[] = [
       'From £1,444.75 a month (Yebo, R23,220.00), up to £7,313.22 a month for the largest offices, excluding VAT.',
       'Nine sealed-off private offices, each with a door you can close. A screen is included. Backup power, backup internet, all the coffee you can drink, 24/7/365 security and meeting room credits are included. Ask us what is available.',
     ],
-    action: { label: 'Get A Quote', to: '/contact-us?for=office', cta: 'plans_office_quote' },
+    action: { label: 'Get a quote', to: '/contact-us?for=office', cta: 'plans_office_quote' },
     link: { label: 'See the nine offices', to: '/offices#the-offices' },
     featured: true,
   },
@@ -72,15 +73,15 @@ export const plans: Plan[] = [
     id: 'meeting-rooms',
     name: 'Meeting rooms',
     tag: 'Six rooms',
-    prices: { GBP: 'Quoted', ZAR: 'Quoted', USD: 'Quoted' },
-    notes: { GBP: 'on request', ZAR: 'on request', USD: 'on request' },
+    prices: { GBP: 'Quoted', ZAR: 'Quoted' },
+    notes: { GBP: 'on request', ZAR: 'on request' },
     list: ['Six rooms', 'Yealink SmartVision 40, TV with HDMI and wireless casting', 'Whiteboard and markers'],
     text: [
       'Quoted, on request.',
       'Our meeting rooms have conferencing equipment, whiteboards, backup power and high-speed internet. Members book with their monthly credits. Anyone can ask for a quote.',
       'Our team confirms dates and pricing when you tell us the date and headcount. We can handle meeting room catering.',
     ],
-    action: { label: 'Get A Room Quote', to: '/contact-us?for=room', cta: 'plans_room_quote' },
+    action: { label: 'Get a room quote', to: '/contact-us?for=room', cta: 'plans_room_quote' },
   },
 ]
 

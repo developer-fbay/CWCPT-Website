@@ -4,11 +4,11 @@ import type { Plan } from '~/data/plans'
 /**
  * The three plans as cards: white cards on black, the featured one reversed (black with a white outline),
  * never pink. Each badge has the light bar (one reason per plan). `detailed` shows the approved Pricing copy
- * instead of the short points; `switcher` adds the display-only currency switch (GBP, ZAR, USD): it changes
+ * instead of the short points; `switcher` adds the display-only currency switch (GBP, ZAR): it changes
  * what is shown, never what is billed.
  */
 const props = defineProps<{ plans: Plan[]; switcher?: boolean; detailed?: boolean }>()
-const currencies = ['GBP', 'ZAR', 'USD'] as const
+const currencies = ['GBP', 'ZAR'] as const
 type Currency = (typeof currencies)[number]
 const currency = ref<Currency>('GBP')
 const shown = computed<Currency>(() => (props.switcher ? currency.value : 'GBP'))

@@ -10,6 +10,7 @@ npm run dev        # http://localhost:3000
 npm run build      # production build (a Node server), prerenders every page
 npm start          # serve the build exactly as DigitalOcean runs it (PORT=3001 npm start for another port)
 npm run images     # make web images (WebP) in public/images from the originals in _media-source/
+npm run og         # make the share images (Open Graph) in public/images/og from app/data/og.json (needs Chrome)
 npm run seo:check  # after a build: titles, descriptions, canonicals, H1s, alt text, images, sitemap, robots.txt
 ```
 
@@ -84,7 +85,11 @@ in markdown, commit and push. The file name is the address (`/blog/your-post-add
 - Never type a colour or glow into a component: use a token. Pink is light, never paint: it only appears as glow
   (the lit full stop, the strip light, icon and text glows).
 - Content never lives in a component: it comes from `app/data` through props.
-- Anything in `[brackets]` is unconfirmed. Leave it visible; never guess a price, size, term or hour.
+- Anything in `[brackets]` in `app/data` is a brief still waiting for copy: never guess a price, size, term or hour.
+  Briefs never reach the site: a page renders a block only when `filled(text)` is true (`app/utils/content.ts`).
+  A whole page built ahead of its content goes in `hiddenPages` (`app/data/site.ts`): it answers 404, links to it
+  disappear and it stays out of the sitemap. PLAN.md lists what each hidden part needs.
+- Every main page has its own share image: add the page to `app/data/og.json` and run `npm run og`.
 - British English, no em dashes. Members use "tags", not "access cards". Review and FAQ text word for word.
 - Prices in £ first, with the rand figure beside them as the approved copy gives it. Other currencies appear only
   through the Pricing display switch, converted at a confirmed, dated rate.

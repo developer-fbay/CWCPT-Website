@@ -7,7 +7,7 @@ usePageSeo({ ...pricingSeo, path: '/pricing', breadcrumbs: crumbs, faqs: pricing
 
 <template>
   <div>
-    <PageHero :title="pricingHero.title" :crumbs="crumbs">
+    <PageHero :title="pricingHero.title" :crumbs="crumbs" :image="pricingHero.image">
       <p v-for="p in pricingHero.paragraphs" :key="p">{{ p }}</p>
     </PageHero>
 

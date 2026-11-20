@@ -4,6 +4,8 @@ import type { Review } from '~/data/reviews'
 /**
  * Two rows of review cards drifting past in opposite directions (hover pauses them). Text word for word.
  * The rows repeat their cards so the loop is seamless; the repeats are hidden from screen readers.
+ * Visitors who turn animations off get a still grid instead: every review once, inside the page margins.
+ * Only one of the two is ever displayed, so screen readers never meet both.
  */
 const props = defineProps<{ reviews: Review[] }>()
 const half = Math.ceil(props.reviews.length / 2)
@@ -12,23 +14,39 @@ const initials = (n: string) => n.split(' ').map((w) => w[0]).join('').slice(0, 
 </script>
 
 <template>
-  <div class="marq-wrap rm r-item">
-    <div v-for="(row, r) in rows" :key="r" class="marq" :class="{ rev: r === 1 }">
-      <template v-for="copy in 2" :key="copy">
-        <figure
-          v-for="(rv, i) in row"
-          :key="`${copy}-${rv.name}`"
-          class="lift rv"
-          :class="(i + r) % 3 === 1 ? 'card-b' : 'card-w'"
-          :aria-hidden="copy === 2 ? 'true' : undefined"
-        >
-          <blockquote class="rv__q">{{ rv.quote }}</blockquote>
-          <figcaption class="rv__who">
-            <span class="avatar" :class="(i + r) % 3 === 1 ? 'av-w' : 'av-b'">{{ initials(rv.name) }}</span>
-            <span class="rv__meta"><b>{{ rv.name }}</b><span class="rv__src">Google review</span></span>
-          </figcaption>
-        </figure>
-      </template>
+  <div class="rm-root">
+    <div class="marq-wrap rm r-item">
+      <div v-for="(row, r) in rows" :key="r" class="marq" :class="{ rev: r === 1 }">
+        <template v-for="copy in 2" :key="copy">
+          <figure
+            v-for="(rv, i) in row"
+            :key="`${copy}-${rv.name}`"
+            class="lift rv"
+            :class="(i + r) % 3 === 1 ? 'card-b' : 'card-w'"
+            :aria-hidden="copy === 2 ? 'true' : undefined"
+          >
+            <blockquote class="rv__q">{{ rv.quote }}</blockquote>
+            <figcaption class="rv__who">
+              <span class="avatar" :class="(i + r) % 3 === 1 ? 'av-w' : 'av-b'">{{ initials(rv.name) }}</span>
+              <span class="rv__meta"><b>{{ rv.name }}</b><span class="rv__src">Google review</span></span>
+            </figcaption>
+          </figure>
+        </template>
+      </div>
+    </div>
+
+    <div class="wrap rv-still">
+      <ul class="rv-grid r-item">
+        <li v-for="(rv, i) in reviews" :key="rv.name">
+          <figure class="rv" :class="i % 3 === 1 ? 'card-b' : 'card-w'">
+            <blockquote class="rv__q">{{ rv.quote }}</blockquote>
+            <figcaption class="rv__who">
+              <span class="avatar" :class="i % 3 === 1 ? 'av-w' : 'av-b'">{{ initials(rv.name) }}</span>
+              <span class="rv__meta"><b>{{ rv.name }}</b><span class="rv__src">Google review</span></span>
+            </figcaption>
+          </figure>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -43,5 +61,14 @@ const initials = (n: string) => n.split(' ').map((w) => w[0]).join('').slice(0, 
 .card-b .rv__src { color: var(--grey); }
 .av-b { background: var(--black); color: var(--white); }
 .av-w { background: var(--white); color: var(--black); }
-@media (prefers-reduced-motion: reduce) { .marq { animation: none; flex-wrap: wrap; width: auto; } }
+
+/* The still grid, for visitors who turn animations off */
+.rv-still { display: none; }
+.rv-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 16px; list-style: none; margin: 0; padding: 0; }
+.rv-grid li { display: flex; }
+.rv-grid .rv { width: 100%; }
+@media (prefers-reduced-motion: reduce) {
+  .marq-wrap { display: none; }
+  .rv-still { display: block; }
+}
 </style>

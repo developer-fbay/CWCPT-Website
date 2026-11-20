@@ -7,8 +7,8 @@ usePageSeo({ ...ukSeo, path: '/international-teams/uk', breadcrumbs: crumbs, faq
 
 <template>
   <div>
-    <PageHero :title="ukHero.title" :crumbs="crumbs" rating>
-      <p>{{ ukHero.intro }}</p>
+    <PageHero :title="ukHero.title" :crumbs="crumbs" :image="ukHero.image" rating>
+      <p v-if="filled(ukHero.intro)">{{ ukHero.intro }}</p>
       <template #actions>
         <Btn to="/contact-us?for=video" cta="uk_hero_video">Book a video walkthrough (9 to 5 UK)</Btn>
         <Btn to="/international-teams/offshore-team-cost" variant="ghost" cta="uk_hero_cost">Seat costs in pounds</Btn>
@@ -33,13 +33,13 @@ usePageSeo({ ...ukSeo, path: '/international-teams/uk', breadcrumbs: crumbs, faq
           <dl class="lines r-body">
             <template v-for="l in seatCost.lines" :key="l.label"><dt>{{ l.label }}</dt><dd>{{ l.value }}</dd></template>
           </dl>
-          <p class="r-body">{{ seatCost.compare }}</p>
+          <p v-if="filled(seatCost.compare)" class="r-body">{{ seatCost.compare }}</p>
           <div class="r-btns"><TextLink to="/international-teams/offshore-team-cost">What a Cape Town team costs</TextLink></div>
         </div>
       </div>
     </section>
 
-    <section class="sec" data-rv aria-labelledby="client-h">
+    <section v-if="filled(ukClient)" class="sec" data-rv aria-labelledby="client-h">
       <div class="wrap split">
         <SectionHeading id="client-h" :lines="['A UK client', 'here']" />
         <p class="lead muted r-body">{{ ukClient }}</p>

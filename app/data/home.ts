@@ -7,7 +7,7 @@ export const homeSeo = {
   // The wireframe's target: "coworking space cape town". To replace with the approved Home copy's SEO table.
   title: 'Coworking Space in Gardens, Cape Town | Co Work Cape Town',
   description:
-    'Dedicated desks, nine private offices and meeting rooms at Wembley Square, Gardens, Cape Town, with backup power and backup internet, 24/7 access and all the coffee you can drink.',
+    'Dedicated desks, nine private offices and meeting rooms at Wembley Square, Gardens, Cape Town, with backup power, backup internet and 24/7 access.',
 }
 
 export const hero = {
@@ -21,8 +21,8 @@ export const hero = {
     'Co Work Cape Town takes remote working out of isolation. No more load-shedding headaches or flaky Wi-Fi, just reliable connectivity, great coffee, focused workspaces, and a buzzing community where ideas happen. Good vibes, hard work, and Cape Town charm included.',
   // Button wording from the wireframe (Jesse, 2026-11-18)
   actions: [
-    { label: 'Book A Tour', to: '/contact-us?for=tour', cta: 'hero_book_tour', variant: 'white' as const },
-    { label: 'Get A Quote', to: '/contact-us?for=quote', cta: 'hero_quote', variant: 'ghost' as const },
+    { label: 'Book a tour', to: '/contact-us?for=tour', cta: 'hero_book_tour', variant: 'white' as const },
+    { label: 'Get a quote', to: '/contact-us?for=quote', cta: 'hero_quote', variant: 'ghost' as const },
   ],
   // The live site's Vimeo video, for now, playing in the logo's block. The still is its old fallback image.
   video: {

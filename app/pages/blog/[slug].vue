@@ -51,7 +51,7 @@ async function copyLink() {
     <div class="bar" :class="{ 'bar--on': barOn }" aria-hidden="true">
       <div class="wrap bar__inner">
         <span class="bar__t">{{ p.title }}</span>
-        <Btn to="/contact-us?for=tour" sm cta="blog_bar_tour">Book A Tour</Btn>
+        <Btn to="/contact-us?for=tour" sm cta="blog_bar_tour">Book a tour</Btn>
       </div>
       <span class="bar__p" :style="{ transform: `scaleX(${progress})` }" />
     </div>

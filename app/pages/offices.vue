@@ -55,7 +55,7 @@ const setView = (v: 'grid' | 'list') => { switched.value = true; view.value = v 
         </div>
         <div v-if="view === 'grid'" class="cards" :class="{ 'is-now': switched }">
           <!-- Gatsby gets the reversed (black) card: the biggest office, the way the featured plan is reversed -->
-          <OfficeCard v-for="(o, i) in offices" :key="o.anchor" :office="o" :featured="o.anchor === 'bruh'" class="r-item" :style="{ '--i': i % 3 }" />
+          <OfficeCard v-for="(o, i) in offices" :key="o.anchor" :office="o" :featured="o.anchor === 'gatsby'" class="r-item" :style="{ '--i': i % 3 }" />
         </div>
         <div v-else class="olist is-now">
           <OfficeRow v-for="o in offices" :key="o.anchor" :office="o" />

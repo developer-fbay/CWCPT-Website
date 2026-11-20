@@ -1,5 +1,6 @@
 // Contact page: structure and fields from the wireframe (Contact.dc.html). No approved Contact copy yet:
 // [bracketed] lines are the wireframe's placeholders. Facts (email, phone, address, hours) are approved.
+import { photo } from './types'
 
 export const contactSeo = {
   title: 'Book a tour or get a quote',
@@ -8,6 +9,7 @@ export const contactSeo = {
 
 export const contactHero = {
   title: 'Book a tour, or get a quote', // the wireframe's working H1
+  image: photo('photos', 'entrance-2-5563', 'The reception wall at Co Work Cape Town, with clocks and a world map above a black sofa'),
   intro: '[Intro from the Contact copy.]',
 }
 
@@ -38,5 +40,11 @@ export const nextSteps = {
   steps: ['[We confirm the slot by email.]', '[The tour, in person or on a video call: length to confirm.]', '[You get a one-page quote and a start date.]'],
 }
 
-export const consent = '[Consent line from the Privacy copy.]'
-export const thanks = (name: string) => `Thanks, ${name}. [Confirmation text from the Contact copy.]`
+// Written 2026-11-20 from the live privacy policy ("automatic consent is given to use this information internally
+// to provide the best possible service"): to approve or replace with the Contact copy's own line.
+export const consent = {
+  text: 'I agree to Co Work Cape Town using these details to reply to my enquiry, as set out in the',
+  link: { label: 'privacy and cookie policy', to: '/privacy-policy' },
+}
+// The thank-you: "Thanks, Name." plus the confirmation line once it is written
+export const thanks = { line: (name: string) => (name ? `Thanks, ${name}.` : 'Thanks.'), text: '[Confirmation text from the Contact copy.]' }

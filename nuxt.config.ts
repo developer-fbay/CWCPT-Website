@@ -2,6 +2,7 @@
 // Hosted on DigitalOcean App Platform as a Node server (decided with Codi, 2026-11-20): it serves the prerendered
 // pages and files, and runs the small server part (server/api) for form posts to n8n. Settings: README "Deploy".
 import { readdirSync } from 'node:fs'
+import { hiddenPages } from './app/data/site'
 
 // Every blog post is prerendered, not only the ones the crawler reaches: the blog index shows a few posts and
 // loads the rest on "Load more", so older posts would otherwise be missed (and left out of the sitemap).
@@ -9,6 +10,10 @@ import { readdirSync } from 'node:fs'
 const blogRoutes = readdirSync(new URL('./content/blog/', import.meta.url))
   .filter((f) => f.endsWith('.md') && !f.startsWith('_') && !/readme/i.test(f))
   .map((f) => `/blog/${f.replace(/\.md$/, '')}`)
+
+// Pages that stay hidden until their content is written (app/data/site.ts), plus the blog until it has a post.
+// They are left out of the sitemap and never prerendered, and answer 404 (app/middleware/hidden.global.ts).
+const hiddenRoutes = [...hiddenPages, ...(blogRoutes.length ? [] : ['/blog', '/blog/**'])]
 
 // Caching, in three layers (all in routeRules below, except where noted):
 // 1. Pages: prerendered HTML with max-age=0, must-revalidate (and an ETag): browsers keep a copy but check it
@@ -39,6 +44,7 @@ export default defineNuxtConfig({
     credits: false,
     discoverImages: false,
     discoverVideos: false,
+    exclude: hiddenRoutes,
   },
 
   runtimeConfig: {
@@ -49,6 +55,8 @@ export default defineNuxtConfig({
     supabaseServiceKey: '',
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://coworkcapetown.com',
+      // The blog (index, links, sitemap) appears once content/blog has a post (see useHiddenPages)
+      blogLive: blogRoutes.length > 0,
       // Only if the browser ever reads Supabase directly (e.g. live office availability).
       supabaseUrl: '',
       supabaseAnonKey: '',
@@ -84,7 +92,8 @@ export default defineNuxtConfig({
   nitro: {
     preset: process.env.NITRO_PRESET || 'node-server',
     compressPublicAssets: true,
-    prerender: { crawlLinks: true, routes: ['/', '/blog', ...blogRoutes] },
+    // Hidden pages (site.ts hiddenPages) are never linked, so the crawler never prerenders them
+    prerender: { crawlLinks: true, routes: ['/', ...(blogRoutes.length ? ['/blog', ...blogRoutes] : [])], ignore: hiddenRoutes },
     // Blog posts are markdown files in content/blog, bundled with the server (see server/utils/blog.ts)
     serverAssets: [{ baseName: 'blog', dir: '../content/blog' }],
   },

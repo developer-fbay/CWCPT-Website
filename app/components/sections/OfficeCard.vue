@@ -36,13 +36,14 @@ const let_ = computed(() => props.office.status === 'let')
         <dt>Price</dt><dd>{{ office.price }} a month <span class="nowrap">({{ office.priceZar }})</span>, excl. VAT</dd>
       </dl>
       <p class="oc__line">{{ office.line }}</p>
+      <!-- The tour link sits with the text, so every card's button lines up at the bottom -->
+      <TextLink v-if="office.tourLink && !let_" :to="`/contact-us?for=tour&ref=${office.anchor}`" :light="featured" class="oc__tour">See it on a tour</TextLink>
       <div class="row oc__actions">
         <template v-if="let_">
           <Btn :to="`/contact-us?for=office&ref=${office.anchor}`" :variant="featured ? 'ghost' : 'ghost-dark'" sm :cta="`office_${office.anchor}_waitlist`">Tell me when it's free</Btn>
         </template>
         <template v-else>
           <Btn :to="`/contact-us?for=office&ref=${office.anchor}`" :variant="featured ? 'white' : 'black'" sm :cta="`office_${office.anchor}_quote`">{{ office.quoteLabel }}</Btn>
-          <TextLink v-if="office.tourLink" :to="`/contact-us?for=tour&ref=${office.anchor}`" :light="featured">See it on a tour</TextLink>
         </template>
       </div>
     </div>
@@ -58,6 +59,7 @@ const let_ = computed(() => props.office.status === 'let')
 .oc__name { font-size: var(--fs-card); }
 .oc__line { font-size: 15px; line-height: 1.55; color: var(--ink-2); }
 .card-b .oc__line { color: #cfcfcf; }
+.oc__tour { align-self: flex-start; }
 .oc__actions { margin-top: auto; }
 .nowrap { white-space: nowrap; }
 </style>

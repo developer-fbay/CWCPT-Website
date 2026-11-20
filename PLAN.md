@@ -43,7 +43,6 @@ Decided 2026-11-16 (blog and Home H1: 2026-11-18; hosting changed from Cloudflar
 - [ ] Contact form fields and tabs (the wireframe has a set)
 - [ ] The open QA points in the approved copy for Offices, Pricing, Meeting rooms and Location
 - [ ] The real Google Maps link
-- [ ] The GBP to USD rate and date for the Pricing display switch
 - [ ] Copy for the pages that have none yet: Home, About, FAQ, Contact, International Teams, UK, Offshore team cost, Office cost guide
 - [ ] Figures for the offshore team cost page, and whether the calculator is built
 
@@ -70,6 +69,11 @@ Decided 2026-11-16 (blog and Home H1: 2026-11-18; hosting changed from Cloudflar
       and icons 30 days, `/api` never cached; Brotli and gzip copies made at build time; addresses ending in a slash
       301 to the one without; every blog post prerendered; the `*.ondigitalocean.app` preview sends `noindex`.
       Map any old WordPress address that changed in `routeRules` before launch
+
+- [x] QA fixes (2026-11-20): privacy and cookie policy from the live site; unfinished blocks and pages hidden
+      (see below); reviews work with animations off; phone menu and form errors work by keyboard and screen reader;
+      the open FAQ "?" readable on white; a share image, title and alt text per page; currency switch GBP and ZAR;
+      sentence-case buttons; a photo per hero; balanced partner logos; contrast, phone format and office card fixes
 
 ## Build order
 
@@ -107,10 +111,49 @@ Decided 2026-11-16 (blog and Home H1: 2026-11-18; hosting changed from Cloudflar
 Running alongside: **assets** (real logo SVG, favicon, Open Graph image `public/images/og-default.jpg`, photos of
 every office, room and zone, hero video).
 
+## Hidden until built (2026-11-20)
+
+Nothing unfinished shows on the site. Two mechanisms, both automatic:
+
+- **Whole pages** in `hiddenPages` (`app/data/site.ts`) answer 404, are never linked (Btn, TextLink and the footer
+  skip links to them) and stay out of the sitemap. Take a path out of the list to publish it. The blog does the same
+  by itself until `content/blog` has its first post.
+- **Blocks inside live pages** whose text is still a `[bracketed]` brief in `app/data` are not rendered (`filled()` in
+  `app/utils/content.ts`). Replace the brief with the real copy and the block appears.
+
+| Hidden | What it needs to go live |
+|---|---|
+| `/international-teams/offshore-team-cost` | Salary, employer of record fee and equipment per seat for sales, support and developer roles, each with a named, dated source (and leadership's yes to publishing the EOR fee); the cost-against-London chart; what the figures leave out; the five-seat worked example |
+| `/office-cost-cape-town` | Lease rent per m² and serviced office per person by area, with broker sources and year; what a lease leaves out; the 12-month comparison; when a lease or a serviced office makes sense; an author with a real name |
+| `/blog` | The intro (about 40 words) and the first posts (`content/blog/README.md`) |
+| About: "Why it exists", "The people", "Part of a group", "Mentions" | The story (2 or 3 paragraphs); names, roles and photos; which sister companies to name; press and directory listings |
+| International Teams: "How it works from abroad", "Why Cape Town", two "What's handled" items | The three steps, the forwardable block for employers, onboarding and growing terms |
+| UK: London comparison, "A UK client here" | A London desk price with source; a client case snapshot |
+
+## Needs copy or answers from Jesse and the team
+
+Each item fills a hidden block or settles a question; the data file is named so it can be dropped straight in.
+
+- [ ] **Contact** (`contact.ts`): the intro, the three "What happens next" steps (with the tour's length), the
+      thank-you line; approve or replace the consent line written from the privacy policy
+- [ ] **FAQ** (`faq.ts`): the intro and the two help lines ("Still have a question?", "Rather just see it?")
+- [ ] **Home** (`home.ts`): the "More than just desks" copy (about 150 words) and the location teaser (about 60 words)
+- [ ] **About** (`about.ts`): the hero paragraph and "Facts checked: month and year", plus the hidden sections above
+- [ ] **International Teams and UK** (`international.ts`): both hero intros, plus the hidden blocks above
+- [ ] **404** (`site.ts` notFound): the message
+- [ ] **Meeting rooms**: which photo is which room. img-5124, img-5150, img-5153 and img-5170 in `public/images/photos`
+      look like the rooms; the cards use three stand-ins (capacities stay unpublished, as approved)
+- [ ] **Location**: a photo of Table Mountain from the space (the fourth photo in "Around Wembley Square")
+- [ ] **Billing currencies**: the copy still says "GBP, USD, ZAR or EUR" (Pricing, Offices, International, About,
+      FAQ answers). The display switch is now GBP and ZAR: keep the billing line, or bill in GBP and ZAR only?
+- [ ] **Offices FAQ "Is parking included?"** gives rand first (R2,150 (£96.74)); FAQ text is word for word, so it
+      stays until the copy owner swaps it to £ first like everywhere else
+- [ ] **Offices "How moving in works"**: the approved line "We do not have a walkthrough video" now reads "You can
+      also book a video walkthrough" (Jesse, 2026-11-20): tell the copy owner
+- [ ] **Social profiles** (Instagram, LinkedIn, Google Business) for the footer and the schema's sameAs
+- [ ] **The real Google listing link**, so "Read all reviews" goes to Google instead of the About page
+
 ## Known gaps
 
-- About, FAQ, Contact, International Teams, UK, Offshore team cost and Office cost guide use working copy with
-  `[brackets]` until their approved copy arrives.
-- The photo on each office and room card is a stand-in until each photo is matched to its office or room.
 - Review cards all show five stars: confirm each real rating on Google first (overall rating is 4.6).
-- The 404 message is a placeholder.
+- The photo on each office card is a stand-in until each photo is matched to its office.
