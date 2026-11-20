@@ -76,6 +76,10 @@ button, input, select, textarea { font: inherit; color: inherit; }
   clip: rect(0 0 0 0); white-space: nowrap;
 }
 
+/* A link to a section lands with the section just under the header, not behind it. Sections also settle into
+   view after scrolling (plugins/section-settle.client.ts). */
+#main > * > section, #main > section { scroll-margin-top: var(--header-h); }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; transition-duration: 1ms !important; }

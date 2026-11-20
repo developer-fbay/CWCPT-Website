@@ -96,6 +96,9 @@ in markdown, commit and push. The file name is the address (`/blog/your-post-add
   height minus the header) and a dashed line where each screen ends. It stays on in that tab, across pages and
   reloads, until `?folds=off`. Check at 1920 x 940 (a 1080p screen at 100%), 1536 x 730 (the same at 125%) and
   1366 x 650 (a small laptop).
+- On laptops and desktops, sections settle into view after a scroll: stop near a section's top and the page
+  glides it in under the header (`app/plugins/section-settle.client.ts`; `REACH` and `SLACK` set how strongly).
+  It never pulls a slow scroll back, and it is off on phones and for visitors who turn animations off.
 - British English, no em dashes. Members use "tags", not "access cards". Review and FAQ text word for word.
 - Prices in £ first, with the rand figure beside them as the approved copy gives it. Other currencies appear only
   through the Pricing display switch, converted at a confirmed, dated rate.
