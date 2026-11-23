@@ -6,7 +6,7 @@
     "node": ">=22"
   },
   "scripts": {
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --no-tui",
     "build": "nuxt build",
     "start": "node .output/server/index.mjs",
     "generate": "nuxt generate",
