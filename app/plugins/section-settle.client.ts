@@ -10,7 +10,11 @@
 // Laptops and desktops only: on phones sections are taller than the screen. Never for visitors who turn
 // animations off, and never after a scroll the visitor didn't make (a link to an anchor, a new page).
 // Check how sections fit one screen with ?folds (README).
+//
+// Still being tuned (2026-11-25): it runs only on the local dev server (npm run dev), never on the live site.
+// To turn it on for everyone, remove the import.meta.dev line below.
 export default defineNuxtPlugin((nuxtApp) => {
+  if (!import.meta.dev) return
   const allowed = matchMedia('(min-width: 961px) and (min-height: 560px) and (prefers-reduced-motion: no-preference)')
   const REACH = 0.3 // of a screen: how far ahead a section's top can be and still pull the page to it
   const SLACK = 0.1 // of a screen: how far past a section's top a scroll can stop and still settle back onto it

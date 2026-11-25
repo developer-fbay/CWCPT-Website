@@ -1,8 +1,9 @@
 <script setup lang="ts">
-// The screen guides for testing window sizes load only with ?folds in the address (utils/folds.ts)
+// The screen guides for testing window sizes load only with ?folds in the address (utils/folds.ts), and only on
+// the local dev server (npm run dev) until the section sizes are settled: the live site never shows them
 const folds = ref(false)
 onMounted(() => {
-  folds.value = foldsWanted()
+  folds.value = import.meta.dev && foldsWanted()
 })
 </script>
 
