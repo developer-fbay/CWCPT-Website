@@ -2,7 +2,7 @@
 import { features, homeFacts, homeFaqs, homeSeo, locationTeaser, officesLead, whyLayout, whyLead } from '~/data/home'
 import { offices } from '~/data/offices'
 import { plans, plansHomeLead } from '~/data/plans'
-import { reviews } from '~/data/reviews'
+import { reviewPhotos, reviews } from '~/data/reviews'
 import { site } from '~/data/site'
 import { photo, type BlogCard } from '~/data/types'
 import { maps } from '~/data/location'
@@ -144,7 +144,7 @@ const officePhotos = [
           </div>
         </div>
       </div>
-      <ReviewsMarquee :reviews="reviews" class="reviews__marq" />
+      <ReviewsMarquee :reviews="reviews" :photos="reviewPhotos" class="reviews__marq" />
     </section>
 
     <!-- The three newest blog posts (wireframe HomeB); hidden until there are posts -->

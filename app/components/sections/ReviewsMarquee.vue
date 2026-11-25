@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Review } from '~/data/reviews'
+import type { Img } from '~/data/types'
 
 /**
  * Two rows of review cards drifting past in opposite directions (hover pauses them). Text word for word.
@@ -8,8 +9,10 @@ import type { Review } from '~/data/reviews'
  * hidden from screen readers.
  * Visitors who turn animations off get a still grid instead: every review once, inside the page margins.
  * Only one of the two is ever displayed, so screen readers never meet both.
+ * With `photos`, a photo of the space rides after every card (ReviewIdeas F, 2026-11-20): each row takes its own
+ * half of the photos and cycles through them. The still grid stays reviews only.
  */
-const props = defineProps<{ reviews: Review[] }>()
+const props = defineProps<{ reviews: Review[]; photos?: Img[] }>()
 const half = Math.ceil(props.reviews.length / 2)
 // A row needs at least four cards: two copies of it (2 x 4 x 386px) must cover the widest screens (3000px), or
 // its loop shows a gap at the right edge before it wraps. A short row borrows the reviews it doesn't have yet.
@@ -21,6 +24,17 @@ const rows = computed(() => [pad(props.reviews.slice(0, half + 1)), pad(props.re
 // where a row's loop joins
 const dark = (i: number, r: number) => (i + 2 * r) % 3 === 1
 const initials = (n: string) => n.split(' ').map((w) => w[0]).join('').slice(0, 2)
+// The photos for row r: the first half of the list for the top row, the rest for the bottom one
+const rowPhotos = (r: number) => {
+  const all = props.photos ?? []
+  const cut = Math.ceil(all.length / 2)
+  const own = r === 0 ? all.slice(0, cut) : all.slice(cut)
+  return own.length ? own : all
+}
+const photoAt = (r: number, i: number) => {
+  const own = rowPhotos(r)
+  return own.length ? own[i % own.length] : undefined
+}
 </script>
 
 <template>
@@ -28,19 +42,32 @@ const initials = (n: string) => n.split(' ').map((w) => w[0]).join('').slice(0, 
     <div class="marq-wrap rm r-item">
       <div v-for="(row, r) in rows" :key="r" class="marq" :class="{ rev: r === 1 }">
         <template v-for="copy in COPIES" :key="copy">
-          <figure
-            v-for="(rv, i) in row"
-            :key="`${copy}-${rv.name}`"
-            class="lift rv"
-            :class="dark(i, r) ? 'card-b' : 'card-w'"
-            :aria-hidden="copy > 1 ? 'true' : undefined"
-          >
-            <blockquote class="rv__q">{{ rv.quote }}</blockquote>
-            <figcaption class="rv__who">
-              <span class="avatar" :class="dark(i, r) ? 'av-w' : 'av-b'">{{ initials(rv.name) }}</span>
-              <span class="rv__meta"><b>{{ rv.name }}</b><span class="rv__src">Google review</span></span>
-            </figcaption>
-          </figure>
+          <template v-for="(rv, i) in row" :key="`${copy}-${rv.name}`">
+            <figure
+              class="lift rv"
+              :class="dark(i, r) ? 'card-b' : 'card-w'"
+              :aria-hidden="copy > 1 ? 'true' : undefined"
+            >
+              <blockquote class="rv__q">{{ rv.quote }}</blockquote>
+              <figcaption class="rv__who">
+                <span class="avatar" :class="dark(i, r) ? 'av-w' : 'av-b'">{{ initials(rv.name) }}</span>
+                <span class="rv__meta"><b>{{ rv.name }}</b><span class="rv__src">Google review</span></span>
+              </figcaption>
+            </figure>
+            <figure v-if="photoAt(r, i)" class="rv-ph zoom" :aria-hidden="copy > 1 ? 'true' : undefined">
+              <img
+                :src="photoAt(r, i)!.src"
+                :srcset="photoAt(r, i)!.srcset"
+                sizes="320px"
+                alt=""
+                loading="lazy"
+                decoding="async"
+                width="320"
+                height="240"
+              >
+              <figcaption class="rv-ph__cap">{{ photoAt(r, i)!.alt }}</figcaption>
+            </figure>
+          </template>
         </template>
       </div>
     </div>
@@ -75,7 +102,15 @@ const initials = (n: string) => n.split(' ').map((w) => w[0]).join('').slice(0, 
    is exactly one copy and the loop never jumps. Direction and speed still come from .marq and .marq.rev. */
 .rm .marq { gap: 0; animation-name: rm-loop; }
 @keyframes rm-loop { from { transform: translateX(0); } to { transform: translateX(calc(-100% / 3)); } }
-.rm .marq .rv { margin-right: 16px; }
+.rm .marq .rv, .rm .marq .rv-ph { margin-right: 16px; }
+/* A photo of the space between the cards: as tall as the row, its name on a small dark pill */
+.rv-ph { position: relative; flex: none; width: min(320px, 72vw); margin: 0; border-radius: var(--radius); overflow: hidden; background: var(--line-dark); }
+.rv-ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.rv-ph__cap {
+  position: absolute; left: 14px; bottom: 12px; padding: 6px 10px; border-radius: var(--r-pill);
+  background: color-mix(in srgb, var(--black) 60%, transparent); color: var(--white);
+  font-size: 11px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+}
 .rv { width: min(370px, 82vw); flex: none; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 18px; margin: 0; }
 .rv__q { font-size: var(--fs-body); line-height: 1.55; font-weight: 500; }
 .rv__who { display: flex; gap: 12px; align-items: center; }
